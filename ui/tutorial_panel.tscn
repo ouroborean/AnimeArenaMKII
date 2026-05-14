@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://wmg54j41jm1s"]
 
-[ext_resource type="Texture2D" path="res://assets/ui/default_menu_frame.png" id="1_jvaly"]
-[ext_resource type="Script" path="res://ui/tutorial_panel.gd" id="1_nvsjf"]
-[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_jwgn5"]
-[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="3_xtwn1"]
+[ext_resource type="Texture2D" uid="uid://d4ex8o7qeymfa" path="res://assets/ui/default_menu_frame.png" id="1_jvaly"]
+[ext_resource type="Script" uid="uid://q21d77ukn6ir" path="res://ui/tutorial_panel.gd" id="1_nvsjf"]
+[ext_resource type="FontFile" uid="uid://xc40vfwwm64" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_jwgn5"]
+[ext_resource type="Texture2D" uid="uid://de4jwm6eqinje" path="res://assets/ui/char_select/close panel button.png" id="3_xtwn1"]
 [ext_resource type="PackedScene" path="res://ui/description_animator.tscn" id="4_anmtr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnxpu"]
@@ -13,7 +13,7 @@ texture = ExtResource("1_jvaly")
 font = ExtResource("2_jwgn5")
 font_size = 26
 
-[node name="TutorialPanel" type="CanvasLayer" node_paths=PackedStringArray("animator", "name_label", "close_button", "prev_button", "next_button", "page_dots")]
+[node name="TutorialPanel" type="CanvasLayer" unique_id=1495985650 node_paths=PackedStringArray("animator", "name_label", "close_button", "prev_button", "next_button", "page_dots")]
 layer = 100
 script = ExtResource("1_nvsjf")
 animator = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent/DescriptionAnimator")
@@ -23,97 +23,101 @@ prev_button = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxCont
 next_button = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer/NextButton")
 page_dots = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer/PageDots")
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=1609086087]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Background" type="ColorRect" parent="Root"]
+[node name="Background" type="ColorRect" parent="Root" unique_id=571847479]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="Center" type="CenterContainer" parent="Root"]
+[node name="Center" type="CenterContainer" parent="Root" unique_id=44849418]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Card" type="HBoxContainer" parent="Root/Center"]
+[node name="Card" type="HBoxContainer" parent="Root/Center" unique_id=1254163538]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Root/Center/Card"]
+[node name="PanelContainer" type="PanelContainer" parent="Root/Center/Card" unique_id=575982764]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_vnxpu")
 
-[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer" unique_id=1367297572]
 layout_mode = 2
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer" unique_id=439562817]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer" unique_id=2118790812]
 layout_mode = 2
 theme_override_constants/margin_left = 21
 theme_override_constants/margin_top = -2
 
-[node name="Label" type="Label" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=398316010]
 layout_mode = 2
 text = "Character Name"
 label_settings = SubResource("LabelSettings_7tehv")
 
-[node name="Panel" type="Panel" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer" unique_id=460126281]
 z_index = -1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AnimationParent" type="Control" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel"]
+[node name="AnimationParent" type="Control" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel" unique_id=448372946]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="DescriptionAnimator" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent" instance=ExtResource("4_anmtr")]
+[node name="DescriptionAnimator" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent" unique_id=309836641 instance=ExtResource("4_anmtr")]
+z_index = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 
-[node name="Footer" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Footer" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer" unique_id=1860102024]
 layout_mode = 2
-alignment = 1
 theme_override_constants/separation = 8
+alignment = 1
 
-[node name="PrevButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="PrevButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer" unique_id=731737754]
 layout_mode = 2
 text = "<"
 
-[node name="PageDots" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="PageDots" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer" unique_id=1791527037]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 theme_override_constants/separation = 4
+alignment = 1
 
-[node name="NextButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="NextButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer" unique_id=1850751117]
 layout_mode = 2
 text = ">"
 
-[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card"]
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card" unique_id=1520064700]
 layout_mode = 2
 theme_override_constants/margin_left = -25
 theme_override_constants/margin_top = 25
 
-[node name="TextureButton" type="TextureButton" parent="Root/Center/Card/MarginContainer"]
+[node name="TextureButton" type="TextureButton" parent="Root/Center/Card/MarginContainer" unique_id=251288354]
 layout_mode = 2
 texture_normal = ExtResource("3_xtwn1")

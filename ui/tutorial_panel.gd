@@ -30,6 +30,9 @@ func _ready() -> void:
 	next_button.pressed.connect(_on_next_pressed)
 	animator.page_started.connect(_on_page_started)
 	animator.script_finished.connect(_on_script_finished)
+	var character = Character.from_character_name("naruto")
+	character.initialize(true)
+	set_character(character)
 
 
 func set_character(character) -> void:
