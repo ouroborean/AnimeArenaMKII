@@ -9,7 +9,7 @@ func split_desc():
 	return [
 		"Sets up Susanoo (Invisible)",
 		["When Itachi's HP drops below 50: gains 50 Shield, permanently ignores non-damage effects, takes 10 Affliction damage per turn", Color.CADET_BLUE],
-		["On activation, Crow Clone / Tsukuyomi / Kotoamatsukami are permanently replaced by Totsuka Blade / Yata Mirror / Slumbering Dragon", Color.AQUAMARINE],
+		["On activation, Crow Clone / Tsukuyomi / Kotoamatsukami are permanently replaced by Totsuka Blade / Yata Mirror / Yasaka Magatama", Color.AQUAMARINE],
 	]
 
 

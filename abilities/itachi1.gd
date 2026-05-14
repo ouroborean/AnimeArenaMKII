@@ -36,8 +36,9 @@ func crow_trigger(context):
 		return
 
 	var qc = QueryContext.from_game_state(itachi, itachi.battle)
-
-	apply_allied(qc, itachi, Effect.cost_mod_effect(-1, 2, Energy.Type.RANDOM))
+	var random_mod = Effect.cost_mod_effect(-1, 2, Energy.Type.RANDOM)
+	random_mod.unique_render_id = 5
+	apply_allied(qc, itachi, random_mod)
 	if itachi in enemy.targeter.targets:
 		apply_allied(qc, itachi, Effect.cost_mod_effect(-1, 2, Energy.Type.WHITE))
 

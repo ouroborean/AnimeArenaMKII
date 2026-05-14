@@ -8,7 +8,7 @@ class_name ServerConnection
 # second window). REMOTE connects to the production wss server. The server bind
 # port is the same in both modes; only the client-side URL changes.
 enum NetworkMode { LOCAL, REMOTE }
-const NETWORK_MODE = NetworkMode.LOCAL
+const NETWORK_MODE = NetworkMode.REMOTE
 
 const LOCAL_CLIENT_URL = "ws://127.0.0.1:5695"
 const REMOTE_CLIENT_URL = "wss://server.animaslashanimearenaserver.org"
