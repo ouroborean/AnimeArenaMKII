@@ -2,13 +2,13 @@ extends Ability
 
 
 func describe(user):
-	return "At the start of each turn, a random ally is marked with Fairy Star Strategy. If they use a new skill while marked, Mavis gains 1 Fairy Star and they gain a benefit based on Mavis's stack count. 1: 10 Shield. 2: heal 20 HP. 3: permanently +10 non-Affliction damage. 4+: their skills cost nothing next turn."
+	return "At the start of each turn, a random ally is marked with Fairy Star Strategy. If they use a new skill while marked, Mavis gains 1 Fairy Star Strategy and they gain a benefit based on Mavis's stack count. 1: 10 Shield. 2: heal 20 HP. 3: permanently +10 non-Affliction damage. 4+: their skills cost nothing next turn."
 
 
 func split_desc():
 	return [
 		"Each turn, a random ally is marked with Fairy Star Strategy (Invisible)",
-		"If they use a new skill, Mavis gains 1 Fairy Star and they gain a stack-based reward",
+		"If they use a new skill, Mavis gains 1 stack and they gain a stack-based reward",
 		["1: 10 Shield · 2: 20 heal · 3: permanent +10 non-Affliction damage · 4+: free skills next turn", Color.CADET_BLUE],
 	]
 
@@ -30,8 +30,6 @@ func tag_random_ally(context):
 		return
 	var candidates = []
 	for ally in mavis.team.characters:
-		if ally == mavis:
-			continue
 		if ally.dead or ally.banished:
 			continue
 		if ally.has_effect("Fairy Heart", EffectType.Type.MARK, mavis):
@@ -82,6 +80,7 @@ func fairy_star_used(context):
 	if n == 1:
 		var shield = Effect.shield_effect(10, 2)
 		shield.set_source(self)
+		shield.unique_render_id = 5
 		Character.add_allied_effect(qc, mavis, ally, shield)
 	elif n == 2:
 		Character.resolve_effect_healing(qc, context['effect'], ally, 20)
@@ -89,11 +88,13 @@ func fairy_star_used(context):
 		var dmod = Effect.damage_mod_effect(10, -1, [], [], [DamageType.Type.AFFLICTION])
 		dmod.remove_on_death = false
 		dmod.set_source(self)
+		dmod.unique_render_id = 10
 		Character.add_allied_effect(qc, mavis, ally, dmod)
 	else:
 		for ab in ally.moveset.get_active_abilities(ally):
 			var free = Effect.cost_change_effect({}, 4, [ab.ability_name])
 			free.set_source(self)
+			free.unique_render_id = 15
 			free.description = func(eff): return "This character's skills have no cost."
 			Character.add_allied_effect(qc, mavis, ally, free)
 
