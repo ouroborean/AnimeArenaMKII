@@ -1,6 +1,8 @@
 extends MarginContainer
 class_name DescriptionAnimator
 
+const COST_ORDER := ["Green", "Blue", "White", "Red", "Random"]
+
 signal script_finished
 signal message_shown(index)
 signal page_started(page_index)
@@ -155,10 +157,13 @@ func _show_next(epoch: int) -> void:
 
 func _spawn_entry(entry: Dictionary, instant: bool) -> void:
 	var node: Control
-	if entry.get("type", "") == "image":
-		node = _build_image(entry)
-	else:
-		node = _build_label(entry)
+	match entry.get("type", ""):
+		"image":
+			node = _build_image(entry)
+		"cost":
+			node = _build_cost(entry)
+		_:
+			node = _build_label(entry)
 	_container.add_child(node)
 	if instant:
 		node.modulate.a = 1.0
@@ -195,6 +200,41 @@ func _build_label(entry: Dictionary) -> Control:
 	else:
 		label.label_settings = load("res://ui/char_desc_base_label.tres")
 	return label
+
+
+func _build_cost(entry: Dictionary) -> Control:
+	var hbox := HBoxContainer.new()
+	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	hbox.add_theme_constant_override("separation", 4)
+	hbox.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+
+	var label := Label.new()
+	label.text = "Cost: "
+	label.label_settings = load("res://ui/char_desc_base_label.tres")
+	hbox.add_child(label)
+
+	var cost_dict: Dictionary = entry.get("cost", {})
+	var icon_size: Vector2 = entry.get("icon_size", Vector2(16, 16))
+	var any := false
+	for color in COST_ORDER:
+		var amount: int = cost_dict.get(color, 0)
+		for i in amount:
+			var icon := TextureRect.new()
+			icon.texture = load("res://assets/images/%s_energy.png" % color.to_lower())
+			icon.custom_minimum_size = icon_size
+			icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			hbox.add_child(icon)
+			any = true
+
+	if not any:
+		var free_label := Label.new()
+		free_label.text = "Free"
+		free_label.label_settings = load("res://ui/char_desc_base_label.tres")
+		hbox.add_child(free_label)
+
+	return hbox
 
 
 func _entry_is_break(entry) -> bool:

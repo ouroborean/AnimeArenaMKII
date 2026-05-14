@@ -28,11 +28,19 @@ func image(texture, size: Vector2 = Vector2(64, 64), hold: float = -1.0) -> Desc
 	return self
 
 
+func cost(cost_dict: Dictionary, icon_size: Vector2 = Vector2(16, 16), hold: float = -1.0) -> DescriptionScript:
+	var entry := {"type": "cost", "cost": cost_dict, "icon_size": icon_size}
+	if hold >= 0.0:
+		entry["hold"] = hold
+	entries.append(entry)
+	return self
+
+
 func ability_segment(ability, show_icon: bool = true) -> DescriptionScript:
 	if show_icon and ability.image != null:
 		image(ability.image, Vector2(80, 80))
 	line(ability.ability_name)
-	line(DescriptionScript._format_cost(ability._cost))
+	cost(ability._cost)
 	line("Cooldown: " + str(ability.cooldown))
 	var split = ability.split_desc()
 	if split != null and split.size() > 0:
@@ -81,19 +89,3 @@ static func from_character(character) -> Array:
 	if "description" in character and character.description != "":
 		script.line(character.description)
 	return script.build()
-
-
-static func _format_cost(cost_dict: Dictionary) -> String:
-	var parts: Array = []
-	for key in cost_dict:
-		var amount: int = cost_dict[key]
-		if amount > 0:
-			parts.append(str(amount) + " " + str(key))
-	if parts.is_empty():
-		return "Cost: Free"
-	var s := "Cost: "
-	for i in parts.size():
-		s += parts[i]
-		if i < parts.size() - 1:
-			s += ", "
-	return s
