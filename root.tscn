@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://root.gd" id="1_j1moq"]
 [ext_resource type="AudioStream" path="res://assets/sounds/panel_bop.mp3" id="2_pyidc"]
+[ext_resource type="Script" path="res://ui/help/help_overlay.gd" id="3_help"]
 
 [node name="Client" type="Control"]
 layout_mode = 3
@@ -15,3 +16,7 @@ script = ExtResource("1_j1moq")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pyidc")
 parameters/looping = true
+
+[node name="HelpOverlay" type="CanvasLayer" parent="."]
+layer = 128
+script = ExtResource("3_help")
