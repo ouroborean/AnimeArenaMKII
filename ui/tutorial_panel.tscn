@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/ui/default_menu_frame.png" id="1_jvaly"]
 [ext_resource type="Script" path="res://ui/tutorial_panel.gd" id="1_nvsjf"]
 [ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_jwgn5"]
 [ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="3_xtwn1"]
+[ext_resource type="PackedScene" path="res://ui/description_animator.tscn" id="4_anmtr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnxpu"]
 texture = ExtResource("1_jvaly")
@@ -12,63 +13,107 @@ texture = ExtResource("1_jvaly")
 font = ExtResource("2_jwgn5")
 font_size = 26
 
-[node name="Control" type="HBoxContainer" node_paths=PackedStringArray("animation_parent")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -326.0
-offset_top = -200.0
-offset_right = 326.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TutorialPanel" type="CanvasLayer" node_paths=PackedStringArray("animator", "name_label", "close_button", "prev_button", "next_button", "page_dots")]
+layer = 100
 script = ExtResource("1_nvsjf")
-animation_parent = NodePath("PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent")
+animator = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent/DescriptionAnimator")
+name_label = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Label")
+close_button = NodePath("Root/Center/Card/MarginContainer/TextureButton")
+prev_button = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer/PrevButton")
+next_button = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer/NextButton")
+page_dots = NodePath("Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer/PageDots")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Card" type="HBoxContainer" parent="Root/Center"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Root/Center/Card"]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_vnxpu")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 21
 theme_override_constants/margin_top = -2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-text = "Toga Himiko"
+text = "Character Name"
 label_settings = SubResource("LabelSettings_7tehv")
 
-[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
 z_index = -1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AnimationParent" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Panel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AnimationParent" type="Control" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="DescriptionAnimator" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Panel/AnimationParent" instance=ExtResource("4_anmtr")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Footer" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="PrevButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+text = "<"
+
+[node name="PageDots" type="HBoxContainer" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 4
+
+[node name="NextButton" type="Button" parent="Root/Center/Card/PanelContainer/MarginContainer/VBoxContainer/Footer"]
+layout_mode = 2
+text = ">"
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/Center/Card"]
 layout_mode = 2
 theme_override_constants/margin_left = -25
 theme_override_constants/margin_top = 25
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+[node name="TextureButton" type="TextureButton" parent="Root/Center/Card/MarginContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_xtwn1")
