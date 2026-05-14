@@ -1,8 +1,6 @@
 extends MarginContainer
 class_name DescriptionAnimator
 
-const COST_ORDER := ["Green", "Blue", "White", "Red", "Random"]
-
 signal script_finished
 signal message_shown(index)
 signal page_started(page_index)
@@ -216,11 +214,11 @@ func _build_cost(entry: Dictionary) -> Control:
 	var cost_dict: Dictionary = entry.get("cost", {})
 	var icon_size: Vector2 = entry.get("icon_size", Vector2(16, 16))
 	var any := false
-	for color in COST_ORDER:
-		var amount: int = cost_dict.get(color, 0)
+	for energy_type in Energy.Type.values():
+		var amount: int = cost_dict.get(energy_type, 0)
 		for i in amount:
 			var icon := TextureRect.new()
-			icon.texture = load("res://assets/images/%s_energy.png" % color.to_lower())
+			icon.texture = Energy.get_symbol(energy_type)
 			icon.custom_minimum_size = icon_size
 			icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
