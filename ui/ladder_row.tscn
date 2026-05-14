@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://hpt4rw5n2lxu"]
+
+[ext_resource type="FontFile" uid="uid://wrdiaoro67s0" path="res://assets/LATO-BLACK.TTF" id="1_h4y80"]
+[ext_resource type="Script" uid="uid://dvpbwmgj2seom" path="res://ui/ladder_row.gd" id="1_sce3j"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_aiywi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lx7e6"]
+font = ExtResource("1_h4y80")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5pdc"]
+font = ExtResource("2_aiywi")
+font_size = 13
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 547.0
+offset_bottom = 40.0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+script = ExtResource("1_sce3j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="RankLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+label_settings = SubResource("LabelSettings_lx7e6")
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Cheshire"
+label_settings = SubResource("LabelSettings_u5pdc")
+
+[node name="VSeparator3" type="HSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1795 (46W-4L)"
+label_settings = SubResource("LabelSettings_lx7e6")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+size_flags_vertical = 8

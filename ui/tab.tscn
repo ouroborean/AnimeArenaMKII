@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/tab.gd" id="1_w4c0s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34q6r"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_atuyt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2tsl"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="TabMenuPanel2" type="VBoxContainer"]
+custom_minimum_size = Vector2(770, 600)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -2
+script = ExtResource("1_w4c0s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Paddington" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PanelTab" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_34q6r")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelTab/MarginContainer"]
+layout_mode = 2
+text = "Borders
+"
+label_settings = SubResource("LabelSettings_atuyt")
+
+[node name="Panel" type="PanelContainer" parent="."]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_c2tsl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[connection signal="gui_input" from="HBoxContainer/PanelTab" to="." method="_on_panel_tab_gui_input"]

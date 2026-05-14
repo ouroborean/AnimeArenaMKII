@@ -1,0 +1,189 @@
+[gd_scene load_steps=17 format=3 uid="uid://30dr165urkwt"]
+
+[ext_resource type="Texture2D" uid="uid://b84lqx8ulswye" path="res://assets/ui/win_screen/loss_screen_panel.png" id="1_6bot1"]
+[ext_resource type="Script" uid="uid://ceo3umrm1xwjv" path="res://ui/game_end_panel.gd" id="1_a604c"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_5i7ok"]
+[ext_resource type="FontFile" uid="uid://cftiikkpn6058" path="res://assets/ROBOTO-REGULAR.TTF" id="4_6py8y"]
+[ext_resource type="Texture2D" uid="uid://dfj8ms0tmp6ay" path="res://assets/ui/win_screen/return to menu button.png" id="5_5walb"]
+[ext_resource type="Texture2D" uid="uid://c3wpcavqnknud" path="res://assets/ui/win_screen/match replay button.png" id="6_k0u7u"]
+[ext_resource type="Texture2D" uid="uid://cvet6o6syo62m" path="res://assets/ui/win_screen/match stats button.png" id="7_baxno"]
+[ext_resource type="Texture2D" uid="uid://dj37l31yquwn1" path="res://assets/ui/badges/masters small.png" id="8_vjvj2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkigl"]
+texture = ExtResource("1_6bot1")
+expand_margin_left = 170.0
+expand_margin_top = 43.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xtyk"]
+font = ExtResource("3_5i7ok")
+font_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4fi2"]
+font = ExtResource("3_5i7ok")
+font_size = 18
+font_color = Color(0.988235, 0.988235, 0.988235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqfvk"]
+font = ExtResource("4_6py8y")
+font_size = 14
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oh5lt"]
+texture = ExtResource("5_5walb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ucx61"]
+texture = ExtResource("6_k0u7u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h1eu"]
+texture = ExtResource("7_baxno")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jn1u2"]
+line_spacing = 0.0
+font = ExtResource("3_5i7ok")
+font_size = 13
+
+[node name="GameEndPanel" type="PanelContainer" node_paths=PackedStringArray("ending_label")]
+z_index = 50
+custom_minimum_size = Vector2(400, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -125.0
+offset_right = 215.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkigl")
+script = ExtResource("1_a604c")
+ending_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer2/HBoxContainer2/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Match Type: Ladder"
+label_settings = SubResource("LabelSettings_8xtyk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "You won!"
+label_settings = SubResource("LabelSettings_p4fi2")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "You've earned 350 AP"
+label_settings = SubResource("LabelSettings_rqfvk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(174, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_oh5lt")
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(149, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ucx61")
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(0.309804, 0.309804, 0.309804, 1)
+custom_minimum_size = Vector2(142, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxTexture_8h1eu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 56
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_vjvj2")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 9
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Masters"
+label_settings = SubResource("LabelSettings_jn1u2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer" to="." method="return_click"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer" to="." method="return_hover"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer" to="." method="return_stop_hover"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2" to="." method="replay_click"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2" to="." method="replay_hovered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2" to="." method="replay_hover_stopped"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer3" to="." method="stat_click"]

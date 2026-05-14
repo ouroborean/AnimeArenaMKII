@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/characterpanel.png" id="1_jeeha"]
+[ext_resource type="Script" path="res://ui/toga_disguise_button.gd" id="2_q0nyl"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_xbn0i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0jmn"]
+texture = ExtResource("1_jeeha")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnmpw"]
+font = ExtResource("2_xbn0i")
+font_size = 12
+
+[node name="Control" type="PanelContainer"]
+custom_minimum_size = Vector2(75, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_w0jmn")
+script = ExtResource("2_q0nyl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Disguise"
+label_settings = SubResource("LabelSettings_lnmpw")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://di8ksay3l24o6"]
+
+[ext_resource type="LabelSettings" uid="uid://bs2gekv6mb53a" path="res://ui/char_desc_base_label.tres" id="1_j5kvf"]
+[ext_resource type="Script" uid="uid://cockivahhjt3q" path="res://ui/ability_desc_label.gd" id="2_rrsga"]
+
+[node name="AbilityDescLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Deals 10 Affliction damage to all enemies for 3 turns. Affected enemies can remove this effect by ending their turn while Invulnerable, and if it expires normally, the target is stunned for 1 turn."
+label_settings = ExtResource("1_j5kvf")
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("2_rrsga")

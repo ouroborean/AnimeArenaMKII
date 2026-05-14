@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/enterappanel.png" id="1_havh3"]
+[ext_resource type="Script" path="res://ui/shop_purchase_confirmation_panel.gd" id="2_m65ph"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_5r360"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/confirm button.png" id="4_rwivm"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/decline button.png" id="5_ljywb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pcjfj"]
+texture = ExtResource("1_havh3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qdo7r"]
+font = ExtResource("3_5r360")
+
+[node name="Control" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_pcjfj")
+script = ExtResource("2_m65ph")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_qdo7r")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "for 60059 AP (115851 remaining)"
+label_settings = SubResource("LabelSettings_qdo7r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_rwivm")
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ljywb")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/TextureButton" to="." method="confirm_clicked"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/TextureButton2" to="." method="decline_clicked"]

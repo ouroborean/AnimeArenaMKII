@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/energy_exchange/energy exchange main label.png" id="1_seae6"]
+[ext_resource type="Script" path="res://ui/energy_exchange_panel.gd" id="1_vik3a"]
+[ext_resource type="Texture2D" path="res://assets/images/green_energy.png" id="2_5jv88"]
+[ext_resource type="Texture2D" path="res://assets/images/blue_energy.png" id="3_3adyq"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_m48ju"]
+[ext_resource type="Texture2D" path="res://assets/images/white_energy.png" id="4_3ueew"]
+[ext_resource type="Texture2D" path="res://assets/images/red_energy.png" id="5_cd48v"]
+[ext_resource type="Texture2D" path="res://assets/ui/skill_execution/skill confirm.png" id="8_lnavu"]
+[ext_resource type="Texture2D" path="res://assets/ui/skill_execution/skill cancel.png" id="9_1hkt8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1r7ia"]
+texture = ExtResource("1_seae6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_utf4k"]
+line_spacing = 0.0
+font = ExtResource("3_m48ju")
+font_size = 18
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtxqv"]
+texture = ExtResource("8_lnavu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4t84c"]
+texture = ExtResource("9_1hkt8")
+
+[node name="EnergyExchangePanel" type="PanelContainer" node_paths=PackedStringArray("function_row")]
+z_index = 15
+custom_minimum_size = Vector2(457, 273)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = -53.5
+offset_right = 115.5
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_1r7ia")
+script = ExtResource("1_vik3a")
+function_row = NodePath("MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Offer 2 Energy of the same color"
+label_settings = SubResource("LabelSettings_utf4k")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="ColorButtonRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="GreenButton" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_5jv88")
+expand_mode = 1
+
+[node name="BlueButton" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_3adyq")
+expand_mode = 1
+
+[node name="WhiteButton" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_3ueew")
+expand_mode = 1
+
+[node name="RedButton" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_cd48v")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="FunctionButtonRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ContinueButton" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow"]
+custom_minimum_size = Vector2(116, 23)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wtxqv")
+
+[node name="CancelButton" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow"]
+custom_minimum_size = Vector2(116, 23)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4t84c")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/GreenButton" to="." method="set_green"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/GreenButton" to="." method="_on_green_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/GreenButton" to="." method="_on_green_button_mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/BlueButton" to="." method="set_blue"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/BlueButton" to="." method="_on_blue_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/BlueButton" to="." method="_on_blue_button_mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/WhiteButton" to="." method="set_white"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/WhiteButton" to="." method="_on_white_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/WhiteButton" to="." method="_on_white_button_mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/RedButton" to="." method="set_red"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/RedButton" to="." method="_on_red_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer/ColorButtonRow/RedButton" to="." method="_on_red_button_mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/ContinueButton" to="." method="continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/CancelButton" to="." method="cancel_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/CancelButton" to="." method="_on_cancel_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/MarginContainer2/FunctionButtonRow/CancelButton" to="." method="_on_cancel_button_mouse_exited"]

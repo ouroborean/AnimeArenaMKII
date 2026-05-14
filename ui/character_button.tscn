@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/character_button.gd" id="1_eb8s5"]
+[ext_resource type="Texture2D" path="res://assets/images/Kakashi Hatake/kakashiprof.png" id="2_yuqji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3bc0"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CharacterButton" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -45.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j3bc0")
+script = ExtResource("1_eb8s5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("2_yuqji")
+expand_mode = 1
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.619
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/TextureRect" to="." method="_on_texture_rect_mouse_entered"]

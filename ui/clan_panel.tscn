@@ -1,0 +1,227 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://ui/clan_panel.gd" id="1_2ls84"]
+[ext_resource type="Texture2D" path="res://assets/ui/default_menu_frame.png" id="2_5g73c"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_l1ceg"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="4_a086a"]
+[ext_resource type="PackedScene" path="res://ui/my_clan_panel.tscn" id="5_6a7sf"]
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="5_n14gl"]
+[ext_resource type="PackedScene" path="res://ui/find_clans_panel.tscn" id="6_bvs5c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydaub"]
+texture = ExtResource("2_5g73c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ub51"]
+font = ExtResource("3_l1ceg")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecjfx"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjy2v"]
+font = ExtResource("4_a086a")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghlj5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_kqc8g"]
+font = ExtResource("4_a086a")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xdag"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_fm3fg"]
+font = ExtResource("4_a086a")
+font_color = Color(0.298039, 0.298039, 0.298039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyy21"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="ClanPanel" type="HBoxContainer" node_paths=PackedStringArray("my_clan_tab", "find_clans_tab", "clan_wars_tab")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+script = ExtResource("1_2ls84")
+my_clan_tab = NodePath("PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer")
+find_clans_tab = NodePath("PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2")
+clan_wars_tab = NodePath("PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(639, 439)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ydaub")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer"]
+z_index = -1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Clans"
+label_settings = SubResource("LabelSettings_0ub51")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ecjfx")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "My Clan"
+label_settings = SubResource("LabelSettings_yjy2v")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ghlj5")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Find Clans/Members"
+label_settings = SubResource("LabelSettings_kqc8g")
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5xdag")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Clan Wars"
+label_settings = SubResource("LabelSettings_fm3fg")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer"]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qyy21")
+
+[node name="MyClanMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin" instance=ExtResource("5_6a7sf")]
+visible = false
+layout_mode = 2
+
+[node name="FindClansMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PanelContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin" instance=ExtResource("6_bvs5c")]
+visible = false
+layout_mode = 2
+
+[node name="ClanWarsMargin" type="MarginContainer" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/ClanWarsMargin"]
+layout_mode = 2
+text = "Clan Wars"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 52
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("5_n14gl")
+
+[connection signal="gui_input" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" to="." method="my_clan_button_click"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" to="." method="find_clans_button_click"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3" to="." method="clan_wars_button_click"]
+[connection signal="create_clan_clicked" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin/Control" to="." method="my_clan_panel_create_clicked"]
+[connection signal="send_demotion" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin/Control" to="." method="receive_demotion"]
+[connection signal="send_kick" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin/Control" to="." method="receive_kick"]
+[connection signal="send_leave" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin/Control" to="." method="receive_leave"]
+[connection signal="send_promotion" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/MyClanMargin/Control" to="." method="receive_promotion"]
+[connection signal="accept_clan_offer" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_clan_accept"]
+[connection signal="deny_clan_offer" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_cancel_clan_application"]
+[connection signal="request_clan_info_search" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="search_panel_search_requested"]
+[connection signal="request_player_info_search" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="search_panel_player_search_requested"]
+[connection signal="send_cancel_clan_application" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_cancel_clan_application"]
+[connection signal="send_clan_application" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_send_clan_application"]
+[connection signal="send_clan_invitation" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_send_player_invitation"]
+[connection signal="send_view_clan_request" from="PanelContainer/MarginContainer/MarginContainer/MarginContainer2/VBoxContainer/PanelContainer/FindClansMargin/PanelContainer" to="." method="receive_view_clan_request"]
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]

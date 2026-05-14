@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://ui/clan_search_application_row.gd" id="1_d3bju"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="1_lry2j"]
+[ext_resource type="FontFile" path="res://assets/LATO-BLACK.TTF" id="2_lky8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6dt6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_op6tf"]
+font = ExtResource("1_lry2j")
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_64j8i"]
+font = ExtResource("2_lky8e")
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyxxt"]
+bg_color = Color(0.4, 0, 0.0627451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_2of22"]
+font = ExtResource("2_lky8e")
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31t41"]
+bg_color = Color(0, 0.254902, 0.337255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Control" type="PanelContainer"]
+custom_minimum_size = Vector2(270, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k6dt6")
+script = ExtResource("1_d3bju")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cheshire's Cats"
+label_settings = SubResource("LabelSettings_op6tf")
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "(Application)"
+label_settings = SubResource("LabelSettings_64j8i")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyxxt")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Cancel"
+label_settings = SubResource("LabelSettings_2of22")
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_31t41")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "View"
+label_settings = SubResource("LabelSettings_2of22")
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="apply_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="apply_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="apply_hover_stopped"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="view_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="view_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="view_hover_stop"]

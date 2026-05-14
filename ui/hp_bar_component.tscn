@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://ui/hp_bar_component.gd" id="1_qpqfi"]
+[ext_resource type="FontFile" path="res://assets/LATO-BLACK.TTF" id="4_7b076"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1vor"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1um1d"]
+resource_local_to_scene = true
+bg_color = Color(0.133333, 0.694118, 0.298039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbiva"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.133333, 0.694118, 0.298039, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cak4t"]
+line_spacing = 0.0
+font = ExtResource("4_7b076")
+font_size = 11
+font_color = Color(0.988235, 0.988235, 0.988235, 1)
+
+[node name="HPBarComponent" type="VBoxContainer" node_paths=PackedStringArray("bar", "label")]
+offset_right = 65.0
+offset_bottom = 15.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+script = ExtResource("1_qpqfi")
+bar = NodePath("HealthBar")
+label = NodePath("PanelContainer/Number")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(77, 7)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_d1vor")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1um1d")
+value = 100.0
+show_percentage = false
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_xbiva")
+
+[node name="Number" type="Label" parent="PanelContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 10
+text = "100 / 100"
+label_settings = SubResource("LabelSettings_cak4t")
+horizontal_alignment = 1
+vertical_alignment = 2

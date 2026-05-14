@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/character_description_panel.gd" id="1_612bx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvonf"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxujq"]
+font_color = Color(0, 0.686275, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ognv"]
+font_size = 10
+
+[node name="CharacterDescriptionPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(500, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -91.0
+offset_right = 300.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvonf")
+script = ExtResource("1_612bx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HeaderRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Rows"]
+layout_mode = 2
+
+[node name="AbilityNameLabel" type="Label" parent="MarginContainer/HBoxContainer/Rows/HeaderRow"]
+layout_mode = 2
+text = "Test Ability Name
+"
+label_settings = SubResource("LabelSettings_qxujq")
+
+[node name="CostContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Rows/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="AbilityDescLabel" type="Label" parent="MarginContainer/HBoxContainer/Rows"]
+layout_mode = 2
+text = "asdfasdfasdfsfsfsfasdffsfasfsfsfssssssssssssfasf"
+label_settings = SubResource("LabelSettings_2ognv")
+autowrap_mode = 2

@@ -1,0 +1,190 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3i3qrt2bsecn"]
+
+[ext_resource type="Texture2D" uid="uid://cnbnf8gx6xtfj" path="res://assets/ui/nexus_homepage/nexus very top border.png" id="1_border"]
+[ext_resource type="Script" uid="uid://de1u6s4tjecvc" path="res://ui/nexus_panel.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_title"]
+[ext_resource type="FontFile" uid="uid://4pjhvgcgixac" path="res://assets/ROBOTO-BOLD.TTF" id="3_header"]
+[ext_resource type="Texture2D" uid="uid://lpqgo7hjug0h" path="res://assets/ui/nexus_homepage/close panel button.png" id="5_close"]
+[ext_resource type="PackedScene" path="res://ui/contribution_button_panel.tscn" id="6_contrib"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("1_border")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_accent"]
+bg_color = Color(0.698039, 0.219608, 0.231373, 1)
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -270.0
+offset_right = 440.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+script = ExtResource("1_script")
+
+[node name="PanelBG" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(850, 540)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="BGMargin" type="MarginContainer" parent="PanelBG"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="PanelBG/BGMargin"]
+z_index = -1
+layout_mode = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="PanelBG"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="MainVBox" type="VBoxContainer" parent="PanelBG/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderRow" type="MarginContainer" parent="PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 56
+
+[node name="HeaderBox" type="HBoxContainer" parent="PanelBG/ContentMargin/MainVBox/HeaderRow"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow/HeaderBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_title")
+theme_override_font_sizes/font_size = 32
+text = "NEXUS"
+
+[node name="APLabel" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow/HeaderBox"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_title")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+
+[node name="BodyContent" type="HBoxContainer" parent="PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="UniverseColumn" type="VBoxContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="UniverseHeader" type="Label" parent="PanelBG/ContentMargin/MainVBox/BodyContent/UniverseColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 16
+text = "Universes"
+
+[node name="UniverseScroll" type="ScrollContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent/UniverseColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="UniverseList" type="VBoxContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent/UniverseColumn/UniverseScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="LeaderboardColumn" type="VBoxContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+theme_override_constants/separation = 6
+
+[node name="LeaderboardHeaderRow" type="HBoxContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackButton" type="Button" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn/LeaderboardHeaderRow"]
+visible = false
+custom_minimum_size = Vector2(110, 28)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 13
+text = "< Top Characters"
+
+[node name="LeaderboardHeader" type="Label" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn/LeaderboardHeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 16
+text = "Top Characters"
+vertical_alignment = 1
+
+[node name="AccentBar" type="Panel" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_accent")
+
+[node name="LeaderboardScroll" type="ScrollContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LeaderboardList" type="VBoxContainer" parent="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn/LeaderboardScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="CloseMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 47
+
+[node name="CloseButton" type="TextureButton" parent="CloseMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_close")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ContributionPanel" parent="PopupLayer" instance=ExtResource("6_contrib")]
+visible = false
+offset_left = -136.5
+offset_top = -70.5
+offset_right = 136.5
+offset_bottom = 70.5
+
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/BodyContent/LeaderboardColumn/LeaderboardHeaderRow/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="CloseMargin/CloseButton" to="." method="_on_cancel_button_mouse_entered"]
+[connection signal="mouse_exited" from="CloseMargin/CloseButton" to="." method="_on_cancel_button_mouse_exited"]
+[connection signal="pressed" from="CloseMargin/CloseButton" to="." method="close_clicked"]
+[connection signal="close_contribution_panel" from="PopupLayer/ContributionPanel" to="." method="_on_close_contribution"]
+[connection signal="contribute_amount" from="PopupLayer/ContributionPanel" to="." method="_on_contribute_amount"]

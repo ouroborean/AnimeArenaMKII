@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://ui/effect_tooltip_hover_panel_row_set.gd" id="1_8dmp6"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-REGULAR.TTF" id="2_3u33v"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLDITALIC.TTF" id="3_qgtk6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtutp"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uv68h"]
+line_spacing = 0.0
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wit6"]
+line_spacing = 0.0
+font = ExtResource("2_3u33v")
+font_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea6ou"]
+bg_color = Color(0.698039, 0, 0.0313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y5itc"]
+line_spacing = 0.0
+font = ExtResource("3_qgtk6")
+font_size = 11
+font_color = Color(0.878431, 0.878431, 0.878431, 1)
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("duration", "desc")]
+offset_right = 180.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtutp")
+script = ExtResource("1_8dmp6")
+duration = NodePath("EffectTooltipHoverPanelRowSet/MarginContainer2/PanelContainer/MarginContainer/EffectDuration")
+desc = NodePath("EffectTooltipHoverPanelRowSet/HBoxContainer/EffectDescription2")
+
+[node name="EffectTooltipHoverPanelRowSet" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(180, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EffectTooltipHoverPanelRowSet"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="EffectDescription" type="Label" parent="EffectTooltipHoverPanelRowSet/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "-"
+label_settings = SubResource("LabelSettings_uv68h")
+autowrap_mode = 3
+
+[node name="EffectDescription2" type="Label" parent="EffectTooltipHoverPanelRowSet/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 12.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "This character will ignore COUNTER_USE skills."
+label_settings = SubResource("LabelSettings_2wit6")
+autowrap_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="EffectTooltipHoverPanelRowSet"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="EffectTooltipHoverPanelRowSet/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ea6ou")
+
+[node name="MarginContainer" type="MarginContainer" parent="EffectTooltipHoverPanelRowSet/MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 0
+
+[node name="EffectDuration" type="Label" parent="EffectTooltipHoverPanelRowSet/MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Permanent
+"
+label_settings = SubResource("LabelSettings_y5itc")

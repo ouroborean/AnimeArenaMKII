@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://ui/char_select_character_description.gd" id="1_gfb3c"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_57a0u"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-REGULAR.TTF" id="3_msx8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvonf"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0)
+border_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxujq"]
+line_spacing = 0.0
+font = ExtResource("2_57a0u")
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ognv"]
+line_spacing = 0.0
+font = ExtResource("3_msx8j")
+font_size = 13
+
+[node name="CharacterDescriptionPanel" type="PanelContainer"]
+offset_right = 524.0
+offset_bottom = 116.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvonf")
+script = ExtResource("1_gfb3c")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 103
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HeaderRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Rows"]
+layout_mode = 2
+
+[node name="AbilityNameLabel" type="Label" parent="MarginContainer/HBoxContainer/Rows/HeaderRow"]
+layout_mode = 2
+text = "Test Ability Name
+"
+label_settings = SubResource("LabelSettings_qxujq")
+
+[node name="CostContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Rows/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Rows"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Rows/MarginContainer"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AbilityDescLabel" type="Label" parent="MarginContainer/HBoxContainer/Rows/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "asdfasdfasdfsfsfsfasdffsfasfsfsfssssssssssssfasf"
+label_settings = SubResource("LabelSettings_2ognv")
+autowrap_mode = 2

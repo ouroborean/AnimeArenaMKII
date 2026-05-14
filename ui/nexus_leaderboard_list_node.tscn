@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/nexus_leaderboard_list_node.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/images/Abarai Renji/renjiprof.png" id="2_portrait"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_title"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_entry"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.658824, 0.203922, 0.211765, 1)
+content_margin_left = 8
+content_margin_top = 4
+content_margin_right = 4
+content_margin_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap"]
+bg_color = Color(0.658824, 0.203922, 0.211765, 1)
+content_margin_left = 6
+content_margin_top = 4
+content_margin_right = 6
+content_margin_bottom = 4
+
+[node name="NexusLeaderboardListNode" type="HBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+size_flags_horizontal = 3
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Portrait" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_portrait")
+expand_mode = 1
+
+[node name="EntryPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_entry")
+
+[node name="EntryRow" type="HBoxContainer" parent="EntryPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="EntryPanel/EntryRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_title")
+theme_override_font_sizes/font_size = 17
+text = "Abarai Renji"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="APPanel" type="PanelContainer" parent="EntryPanel/EntryRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ap")
+
+[node name="APLabel" type="Label" parent="EntryPanel/EntryRow/APPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_title")
+theme_override_font_sizes/font_size = 15
+text = "600 AP"
+horizontal_alignment = 1
+vertical_alignment = 1

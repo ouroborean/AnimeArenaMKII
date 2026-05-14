@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/Team_Kakashi.png" id="1_toqco"]
+[ext_resource type="Script" path="res://ui/mission_shortcut_panel.gd" id="1_xeu7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nha3c"]
+bg_color = Color(0.368627, 0.368627, 0.368627, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.721569, 0.721569, 0.721569, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_420tu"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="MissionShortcutPanel" type="PanelContainer"]
+offset_right = 770.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nha3c")
+script = ExtResource("1_xeu7d")
+
+[node name="MissionShortcutMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MissionShortcutMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MissionTitle" type="Label" parent="MissionShortcutMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "The Sharingan Sensei"
+vertical_alignment = 1
+
+[node name="MissionImage" type="TextureRect" parent="MissionShortcutMargin/VBoxContainer"]
+custom_minimum_size = Vector2(300, 210)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_toqco")
+expand_mode = 1
+
+[node name="MissionRank" type="Label" parent="MissionShortcutMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rank Required: Bronze
+"
+
+[node name="LinkLabel" type="Label" parent="MissionShortcutMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_420tu")
+text = "Click here for more info"
+
+[connection signal="gui_input" from="MissionShortcutMargin/VBoxContainer/LinkLabel" to="." method="_on_link_label_gui_input"]

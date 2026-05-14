@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/text_panel.tscn" id="1_2w2jg"]
+[ext_resource type="PackedScene" path="res://ui/menu_button_container_panel.tscn" id="2_dw7b7"]
+
+[node name="MenuSlide" type="HBoxContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextPanel" parent="." instance=ExtResource("1_2w2jg")]
+layout_mode = 2
+
+[node name="MenuButtonContainerPanel" parent="." instance=ExtResource("2_dw7b7")]
+layout_mode = 2

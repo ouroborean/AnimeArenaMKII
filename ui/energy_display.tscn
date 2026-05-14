@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://ixx2a5ca8am3"]
+
+[ext_resource type="Script" uid="uid://381q8bvf2cyu" path="res://ui/energy_display.gd" id="1_rpfo6"]
+[ext_resource type="Texture2D" uid="uid://cigoklmbemo0y" path="res://assets/ui/ingame/exchange energy button.png" id="2_37teb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nb5jb"]
+texture = ExtResource("2_37teb")
+
+[node name="EnergyDisplay" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rpfo6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EnergyDisplayPanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/EnergyDisplayPanel"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="VBoxContainer/EnergyDisplayPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(110, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nb5jb")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="VBoxContainer/PanelContainer" to="." method="_on_panel_container_gui_input"]
+[connection signal="mouse_entered" from="VBoxContainer/PanelContainer" to="." method="_on_exchange_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/PanelContainer" to="." method="_on_exchange_mouse_exited"]

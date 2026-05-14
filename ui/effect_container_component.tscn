@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/effect_container_component.gd" id="1_chgna"]
+[ext_resource type="PackedScene" path="res://ui/effect_tooltip_display.tscn" id="2_2yobn"]
+
+[node name="EffectContainerComponent" type="HBoxContainer" node_paths=PackedStringArray("tooltip_display")]
+offset_right = 50.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_chgna")
+tooltip_display = NodePath("EffectTooltipDisplay")
+
+[node name="EffectTooltipDisplay" parent="." instance=ExtResource("2_2yobn")]
+layout_mode = 2

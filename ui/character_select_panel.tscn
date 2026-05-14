@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://1pcpgu6nbd56"]
+
+[ext_resource type="Script" uid="uid://bwhd685gkk31w" path="res://ui/character_select_panel.gd" id="1_2pifs"]
+[ext_resource type="Texture2D" uid="uid://b38b4bar11jt" path="res://assets/ui/char_select/characterpanel.png" id="1_hp0r8"]
+[ext_resource type="Texture2D" uid="uid://cy5u253qs3gtv" path="res://assets/ui/char_select/leftarrow.png" id="3_nc2d5"]
+[ext_resource type="Texture2D" uid="uid://c5r4tgsd1mwne" path="res://assets/ui/char_select/leftarrowhovered.png" id="4_epl5c"]
+[ext_resource type="Texture2D" uid="uid://diargd8xwdbqr" path="res://assets/ui/char_select/rightarrow.png" id="4_pwjb7"]
+[ext_resource type="Texture2D" uid="uid://bgpn7rrp7tdaj" path="res://assets/ui/char_select/rightarrowhovered.png" id="6_m384s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ry7l0"]
+texture = ExtResource("1_hp0r8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lpx6w"]
+font_color = Color(0.72464263, 0.7246426, 0.7246426, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tywgh"]
+font_size = 12
+font_color = Color(0.69965345, 0.69965345, 0.69965345, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aorw4"]
+font_size = 12
+font_color = Color(0.69803923, 0.69803923, 0.69803923, 1)
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("option_button", "category_option_button")]
+custom_minimum_size = Vector2(500, 239)
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 465.0
+offset_bottom = 230.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_ry7l0")
+script = ExtResource("1_2pifs")
+option_button = NodePath("MarginContainer2/HBoxContainer/HBoxContainer/OptionButton")
+category_option_button = NodePath("MarginContainer2/HBoxContainer/HBoxContainer2/OptionButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LeftButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_nc2d5")
+texture_hover = ExtResource("4_epl5c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 7
+
+[node name="RightButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("4_pwjb7")
+texture_hover = ExtResource("6_m384s")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -11.664
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Filters:"
+label_settings = SubResource("LabelSettings_lpx6w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Anime:"
+label_settings = SubResource("LabelSettings_tywgh")
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 13
+text_overrun_behavior = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "All"
+popup/item_0/id = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Category:"
+label_settings = SubResource("LabelSettings_aorw4")
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+selected = 0
+item_count = 1
+popup/item_0/text = "Any"
+popup/item_0/id = 0
+
+[connection signal="button_down" from="MarginContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_mouse_entered"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/RightButton" to="." method="_on_right_button_mouse_entered"]
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/HBoxContainer2/OptionButton" to="." method="_on_category_option_button_item_selected"]

@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" uid="uid://sfny58kot1mx" path="res://ui/cosmetics_menu_old.gd" id="1_bf2p8"]
+[ext_resource type="Texture2D" uid="uid://cuwro6ovregas" path="res://assets/ui/char_select/cosmetics.png" id="2_4pua8"]
+[ext_resource type="Texture2D" uid="uid://c604tp3f34fsc" path="res://assets/backgrounds/background_ingame_default.png" id="3_nv2bg"]
+[ext_resource type="Texture2D" uid="uid://de4jwm6eqinje" path="res://assets/ui/char_select/close panel button.png" id="3_q27w5"]
+[ext_resource type="Texture2D" uid="uid://duqr2fpseykt5" path="res://assets/backgrounds/background_charselect_default.png" id="4_h4uex"]
+[ext_resource type="Texture2D" uid="uid://bf0oerdc6s463" path="res://assets/cosmetics/playercards/playercard_color_default.png" id="5_hqw2i"]
+
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3advc"]
+texture = ExtResource("2_4pua8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww8e1"]
+bg_color = Color(0.913725, 0.913725, 0.913725, 1)
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 617.0
+offset_bottom = 580.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+script = ExtResource("1_bf2p8")
+
+[node name="CosmeticsMenu" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 580)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_3advc")
+
+[node name="MarginContainer" type="MarginContainer" parent="CosmeticsMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CosmeticsMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BodyMargin" type="MarginContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/BodyMargin"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+selected = 0
+item_count = 1
+popup/item_0/text = "In-Game Background"
+popup/item_0/id = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(284, 192)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_ww8e1")
+
+[node name="TextureRect" type="TextureRect" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(280, 188)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nv2bg")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+selected = 0
+item_count = 1
+popup/item_0/text = "Char Select Background"
+popup/item_0/id = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(284, 192)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_ww8e1")
+
+[node name="TextureRect" type="TextureRect" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2/PanelContainer"]
+custom_minimum_size = Vector2(280, 188)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("4_h4uex")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+selected = 0
+item_count = 1
+popup/item_0/text = "Player Card"
+popup/item_0/id = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="TextureRect" type="TextureRect" parent="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2/PanelContainer"]
+custom_minimum_size = Vector2(305, 75)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("5_hqw2i")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = 22
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("3_q27w5")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="item_selected" from="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OptionButton" to="." method="ingame_background_option_changed"]
+[connection signal="item_selected" from="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2/OptionButton" to="." method="charselect_background_option_changed"]
+[connection signal="item_selected" from="CosmeticsMenu/MarginContainer/ScrollContainer/Rows/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2/OptionButton" to="." method="playercard_option_selected"]
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]

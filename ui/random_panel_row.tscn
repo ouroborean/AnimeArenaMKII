@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/random_offer_button.tscn" id="1_qp77e"]
+[ext_resource type="Script" path="res://ui/random_panel_row.gd" id="1_wbyf8"]
+[ext_resource type="PackedScene" path="res://ui/random_remove_button.tscn" id="2_026tv"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_s0wgd"]
+[ext_resource type="Texture2D" path="res://assets/ui/skill_execution/minus button.png" id="3_bea0a"]
+[ext_resource type="Texture2D" path="res://assets/images/red_energy.png" id="5_xyek4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkr7p"]
+font = ExtResource("2_s0wgd")
+font_color = Color(0.894118, 0.894118, 0.894118, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3skar"]
+texture = ExtResource("3_bea0a")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f80bj"]
+font = ExtResource("2_s0wgd")
+font_color = Color(0.894118, 0.894118, 0.894118, 1)
+
+[node name="RandomPanelRow" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -25.0
+offset_right = 112.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_wbyf8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="OwnedCount" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nkr7p")
+horizontal_alignment = 1
+
+[node name="RandomRemoveButton" parent="HBoxContainer" instance=ExtResource("2_026tv")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3skar")
+
+[node name="ElementSymbol" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_xyek4")
+stretch_mode = 2
+
+[node name="RandomOfferButton" parent="HBoxContainer" instance=ExtResource("1_qp77e")]
+layout_mode = 2
+
+[node name="OfferedCount" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_f80bj")
+horizontal_alignment = 1
+
+[connection signal="button_clicked" from="HBoxContainer/RandomRemoveButton" to="." method="remove_button_clicked"]
+[connection signal="button_clicked" from="HBoxContainer/RandomOfferButton" to="." method="offer_button_clicked"]

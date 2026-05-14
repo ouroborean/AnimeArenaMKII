@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://c2kje8l3pkoot"]
+
+[ext_resource type="Texture2D" uid="uid://cnbnf8gx6xtfj" path="res://assets/ui/nexus_homepage/nexus very top border.png" id="1_border"]
+[ext_resource type="Script" uid="uid://bar3binto4okv" path="res://ui/leaderboard_panel.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://xc40vfwwm64" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_title"]
+[ext_resource type="FontFile" uid="uid://db8wlektkhtgx" path="res://assets/ROBOTO-BOLD.TTF" id="3_header"]
+[ext_resource type="FontFile" uid="uid://cmxvb03nppd21" path="res://assets/LATO-BLACK.TTF" id="4_body"]
+[ext_resource type="Texture2D" uid="uid://lpqgo7hjug0h" path="res://assets/ui/nexus_homepage/close panel button.png" id="5_close"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("1_border")
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=1048253870]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -270.0
+offset_right = 440.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+script = ExtResource("1_script")
+
+[node name="PanelBG" type="PanelContainer" parent="." unique_id=2094617197]
+custom_minimum_size = Vector2(850, 540)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="BGMargin" type="MarginContainer" parent="PanelBG" unique_id=318843719]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="PanelBG/BGMargin" unique_id=1737403584]
+z_index = -1
+layout_mode = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="PanelBG" unique_id=28541580]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="MainVBox" type="VBoxContainer" parent="PanelBG/ContentMargin" unique_id=1741604771]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleMargin" type="MarginContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=2053849707]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="Title" type="Label" parent="PanelBG/ContentMargin/MainVBox/TitleMargin" unique_id=1239364436]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_title")
+theme_override_font_sizes/font_size = 32
+text = "LEADERBOARDS"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=1330877945]
+layout_mode = 2
+
+[node name="TabBar" type="HBoxContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=594927970]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TabRating" type="Button" parent="PanelBG/ContentMargin/MainVBox/TabBar" unique_id=315632279]
+visible = false
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 14
+text = "Rating"
+
+[node name="TabWins" type="Button" parent="PanelBG/ContentMargin/MainVBox/TabBar" unique_id=380422647]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 14
+text = "Most Wins"
+
+[node name="TabStreak" type="Button" parent="PanelBG/ContentMargin/MainVBox/TabBar" unique_id=980892168]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 14
+text = "Win Streak"
+
+[node name="TabClans" type="Button" parent="PanelBG/ContentMargin/MainVBox/TabBar" unique_id=1209763072]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 14
+text = "Clans"
+
+[node name="TabCharacter" type="Button" parent="PanelBG/ContentMargin/MainVBox/TabBar" unique_id=483078446]
+visible = false
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_header")
+theme_override_font_sizes/font_size = 14
+text = "Character"
+
+[node name="HSeparator" type="HSeparator" parent="PanelBG/ContentMargin/MainVBox" unique_id=93230909]
+layout_mode = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=192508213]
+layout_mode = 2
+
+[node name="Col0" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow" unique_id=1434471978]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_body")
+theme_override_font_sizes/font_size = 14
+text = "#"
+
+[node name="Col1" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow" unique_id=970445808]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_body")
+theme_override_font_sizes/font_size = 14
+text = "Player"
+
+[node name="Col2" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow" unique_id=898482670]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_body")
+theme_override_font_sizes/font_size = 14
+text = "Clan"
+
+[node name="Col3" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow" unique_id=420568915]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_body")
+theme_override_font_sizes/font_size = 14
+text = "Rating"
+
+[node name="Col4" type="Label" parent="PanelBG/ContentMargin/MainVBox/HeaderRow" unique_id=608334854]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_body")
+theme_override_font_sizes/font_size = 14
+text = "Record"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelBG/ContentMargin/MainVBox" unique_id=285064301]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=361008285]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RowList" type="VBoxContainer" parent="PanelBG/ContentMargin/MainVBox/ScrollContainer" unique_id=1580170169]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="CharacterGrid" type="ScrollContainer" parent="PanelBG/ContentMargin/MainVBox" unique_id=885874196]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridFlow" type="HFlowContainer" parent="PanelBG/ContentMargin/MainVBox/CharacterGrid" unique_id=298899048]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="CloseMargin" type="MarginContainer" parent="." unique_id=1553710176]
+layout_mode = 2
+theme_override_constants/margin_top = 47
+
+[node name="CloseButton" type="TextureButton" parent="CloseMargin" unique_id=421863314]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_close")
+
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/TabBar/TabRating" to="." method="_on_tab_rating"]
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/TabBar/TabWins" to="." method="_on_tab_wins"]
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/TabBar/TabStreak" to="." method="_on_tab_streak"]
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/TabBar/TabClans" to="." method="_on_tab_clans"]
+[connection signal="pressed" from="PanelBG/ContentMargin/MainVBox/TabBar/TabCharacter" to="." method="_on_tab_character"]
+[connection signal="mouse_entered" from="CloseMargin/CloseButton" to="." method="_on_close_mouse_entered"]
+[connection signal="mouse_exited" from="CloseMargin/CloseButton" to="." method="_on_close_mouse_exited"]
+[connection signal="pressed" from="CloseMargin/CloseButton" to="." method="_on_close_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/skill_execution/plus button.png" id="1_4jg5r"]
+[ext_resource type="Script" path="res://ui/random_offer_button.gd" id="1_8xy7g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydfen"]
+texture = ExtResource("1_4jg5r")
+
+[node name="RandomOfferButton" type="PanelContainer"]
+custom_minimum_size = Vector2(15, 15)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -14.5
+offset_right = 7.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ydfen")
+script = ExtResource("1_8xy7g")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

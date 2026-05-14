@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/tab_menu_panel.gd" id="1_8t4os"]
+[ext_resource type="PackedScene" path="res://ui/tab.tscn" id="2_65pfk"]
+
+[node name="Container" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8t4os")
+
+[node name="TabMenuPanel2" parent="." instance=ExtResource("2_65pfk")]
+z_index = 3
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel2" index="0"]
+mouse_filter = 2
+
+[node name="Paddington" parent="TabMenuPanel2/HBoxContainer" index="0"]
+visible = false
+
+[node name="Label" parent="TabMenuPanel2/HBoxContainer/PanelTab/MarginContainer" index="0"]
+text = "Trinket
+"
+
+[node name="TabMenuPanel3" parent="." instance=ExtResource("2_65pfk")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel3" index="0"]
+mouse_filter = 2
+
+[node name="TabMenuPanel4" parent="." instance=ExtResource("2_65pfk")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel4" index="0"]
+mouse_filter = 2
+
+[node name="Paddington" parent="TabMenuPanel4/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(155, 0)
+
+[node name="Label" parent="TabMenuPanel4/HBoxContainer/PanelTab/MarginContainer" index="0"]
+text = "Titles
+"
+
+[node name="TabMenuPanel5" parent="." instance=ExtResource("2_65pfk")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel5" index="0"]
+mouse_filter = 2
+
+[node name="Paddington" parent="TabMenuPanel5/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(228, 0)
+
+[node name="Label" parent="TabMenuPanel5/HBoxContainer/PanelTab/MarginContainer" index="0"]
+text = "Panels"
+
+[node name="TabMenuPanel6" parent="." instance=ExtResource("2_65pfk")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel6" index="0"]
+mouse_filter = 2
+
+[node name="Paddington" parent="TabMenuPanel6/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(306, 0)
+
+[node name="Label" parent="TabMenuPanel6/HBoxContainer/PanelTab/MarginContainer" index="0"]
+text = "Skins
+"
+
+[node name="TabMenuPanel7" parent="." instance=ExtResource("2_65pfk")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" parent="TabMenuPanel7" index="0"]
+mouse_filter = 2
+
+[node name="Paddington" parent="TabMenuPanel7/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(384, 0)
+
+[node name="PanelTab" parent="TabMenuPanel7/HBoxContainer" index="1"]
+mouse_filter = 1
+
+[node name="Label" parent="TabMenuPanel7/HBoxContainer/PanelTab/MarginContainer" index="0"]
+text = "Medals"
+
+[connection signal="tab_selected" from="TabMenuPanel2" to="." method="tab_selected"]
+[connection signal="tab_selected" from="TabMenuPanel3" to="." method="tab_selected"]
+[connection signal="tab_selected" from="TabMenuPanel4" to="." method="tab_selected"]
+[connection signal="tab_selected" from="TabMenuPanel5" to="." method="tab_selected"]
+[connection signal="tab_selected" from="TabMenuPanel6" to="." method="tab_selected"]
+[connection signal="tab_selected" from="TabMenuPanel7" to="." method="tab_selected"]
+
+[editable path="TabMenuPanel2"]
+[editable path="TabMenuPanel3"]
+[editable path="TabMenuPanel4"]
+[editable path="TabMenuPanel5"]
+[editable path="TabMenuPanel6"]
+[editable path="TabMenuPanel7"]

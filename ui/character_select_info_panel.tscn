@@ -1,0 +1,248 @@
+[gd_scene load_steps=15 format=3 uid="uid://cotjo8r38ikdd"]
+
+[ext_resource type="Script" uid="uid://cc10gid8t05h8" path="res://ui/character_select_info_panel.gd" id="1_14jsx"]
+[ext_resource type="Texture2D" uid="uid://b72iijq4nle2x" path="res://assets/ui/char_select/character view panel.png" id="1_ice22"]
+[ext_resource type="Texture2D" uid="uid://ce1an6thhguv" path="res://assets/images/toukaprof.png" id="2_prmm4"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_tqlx5"]
+[ext_resource type="Texture2D" uid="uid://m74i5mf12vyc" path="res://assets/ui/char_select/mask_icon.png" id="4_77osb"]
+[ext_resource type="AudioStream" uid="uid://c0hlrbx0soe24" path="res://assets/sounds/characterclick.mp3" id="4_ba8os"]
+[ext_resource type="Texture2D" uid="uid://cgildjerj031f" path="res://assets/ui/char_select/superhero_icon.png" id="5_detqg"]
+[ext_resource type="Texture2D" uid="uid://de4jwm6eqinje" path="res://assets/ui/char_select/close panel button.png" id="6_d8ca4"]
+[ext_resource type="PackedScene" path="res://ui/toga_disguise_button.tscn" id="7_fw2g7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_54wtw"]
+texture = ExtResource("1_ice22")
+axis_stretch_horizontal = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vgch"]
+font = ExtResource("3_tqlx5")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8wpp"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.913725, 0.913725, 0.913725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srxia"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myy5a"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("action_container", "character_texture", "character_name", "description_panel_container", "sound", "extra_button", "emblem_container")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -283.0
+offset_right = 283.0
+offset_bottom = 327.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 60
+script = ExtResource("1_14jsx")
+action_container = NodePath("HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MarginContainer/VBoxContainer/MainActionDisplay/ActionMarginContainer/ActionContainer")
+character_texture = NodePath("HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer/InfoAvatarPanel/MarginContainer/TextureRect")
+character_name = NodePath("HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer/MarginContainer/CharacterNameLabel")
+description_panel_container = NodePath("HBoxContainer/PanelBackground/Rows/LowerMargin")
+sound = NodePath("HBoxContainer/PanelBackground/Sound")
+extra_button = NodePath("HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer/Control")
+emblem_container = NodePath("HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer/MarginContainer2/HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -15
+
+[node name="PanelBackground" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(566, 267)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_54wtw")
+
+[node name="Rows" type="VBoxContainer" parent="HBoxContainer/PanelBackground"]
+layout_mode = 2
+
+[node name="UpperMargin" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 12
+
+[node name="CharacterNameLabel" type="Label" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 1.92
+text = "Character Name"
+label_settings = SubResource("LabelSettings_3vgch")
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/MarginContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="UpperRow" type="HBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="MainInfo" type="HBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_h8wpp")
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_77osb")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_srxia")
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("5_detqg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2"]
+layout_mode = 2
+
+[node name="InfoAvatarPanel" type="PanelContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.97
+theme_override_styles/panel = SubResource("StyleBoxFlat_myy5a")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer/InfoAvatarPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer/InfoAvatarPanel/MarginContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_prmm4")
+expand_mode = 1
+
+[node name="Control" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer" instance=ExtResource("7_fw2g7")]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="MainActionDisplay" type="ScrollContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+size_flags_stretch_ratio = 5.0
+vertical_scroll_mode = 0
+
+[node name="ActionMarginContainer" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MarginContainer/VBoxContainer/MainActionDisplay"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="ActionContainer" type="HBoxContainer" parent="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MarginContainer/VBoxContainer/MainActionDisplay/ActionMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LowerMargin" type="MarginContainer" parent="HBoxContainer/PanelBackground/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = -11
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Sound" type="AudioStreamPlayer" parent="HBoxContainer/PanelBackground"]
+stream = ExtResource("4_ba8os")
+volume_db = -10.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 20
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_d8ca4")
+
+[node name="MenuAffixNode" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer/PanelContainer/TextureButton" to="." method="alt_prof_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/VBoxContainer/PanelContainer2/TextureButton" to="." method="alt_skin_pressed"]
+[connection signal="extra_clicked" from="HBoxContainer/PanelBackground/Rows/UpperMargin/VBoxContainer/UpperRow/MainInfo/MarginContainer2/VBoxContainer/Control" to="." method="extra_button_clicked"]
+[connection signal="mouse_entered" from="HBoxContainer/MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/TextureButton" to="." method="close_button_clicked"]

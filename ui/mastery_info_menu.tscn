@@ -1,0 +1,439 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/mastery panel.png" id="1_p4scb"]
+[ext_resource type="Script" path="res://ui/mastery_info_menu.gd" id="1_silh3"]
+[ext_resource type="PackedScene" path="res://ui/mastery_progress_bar.tscn" id="3_lvn75"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="5_6nx00"]
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="5_jqp3a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hn2t4"]
+texture = ExtResource("1_p4scb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_r85pj"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsuk6"]
+font_size = 24
+font_color = Color(0.584314, 0.584314, 0.584314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5tm5"]
+bg_color = Color(0.364706, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shh2s"]
+bg_color = Color(0.372549, 0.372549, 0.372549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8appl"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc7nv"]
+bg_color = Color(0.494118, 0.054902, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.772549, 0.705882, 0.211765, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_48a1g"]
+font_color = Color(1, 1, 0.105882, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7q0x"]
+bg_color = Color(0.360784, 0.360784, 0.360784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_u501w"]
+font = ExtResource("5_6nx00")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_oyrxj"]
+line_spacing = 0.0
+font = ExtResource("5_6nx00")
+font_size = 12
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 566.0
+offset_bottom = 409.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -15
+script = ExtResource("1_silh3")
+
+[node name="MasteryInfoMenu" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(566, 409)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_hn2t4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderRow" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mastery"
+label_settings = SubResource("LabelSettings_r85pj")
+
+[node name="Label2" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.7
+label_settings = SubResource("LabelSettings_dsuk6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5tm5")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BodyRow" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow"]
+layout_mode = 2
+
+[node name="CharacterListContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/CharacterListContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shh2s")
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/CharacterListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CharListGrid" type="GridContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/CharacterListContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="MasteryInfoContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8appl")
+
+[node name="MasteryInfoRow" type="HBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProfileMargin" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/ProfileMargin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.27
+theme_override_constants/separation = 0
+
+[node name="RewardTopRow" type="HBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+tooltip_text = "Title 1"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc7nv")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "2	"
+label_settings = SubResource("LabelSettings_48a1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Character Frame"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc7nv")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer2/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "6"
+label_settings = SubResource("LabelSettings_48a1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Character Alt Portrait"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc7nv")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardTopRow/MarginContainer3/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "10	"
+label_settings = SubResource("LabelSettings_48a1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarMargin" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.34
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="MasteryProgressBar" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/BarMargin" instance=ExtResource("3_lvn75")]
+layout_mode = 2
+
+[node name="RewardBottomRow" type="HBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Skill Panel"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc7nv")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "4"
+label_settings = SubResource("LabelSettings_48a1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow"]
+editor_description = "Title 2"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+tooltip_text = "Title 2"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc7nv")
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/MarginContainer/PanelContainer/MasteryInfoRow/VBoxContainer/RewardBottomRow/MarginContainer2/PanelContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "8	"
+label_settings = SubResource("LabelSettings_48a1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompletedLabel" type="Label" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer"]
+layout_mode = 2
+text = "3/16 Masteries Completed"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l7q0x")
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MasteryList" type="VBoxContainer" parent="MasteryInfoMenu/MarginContainer/VBoxContainer/BodyRow/HBoxContainer/MasteryInfoContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu"]
+layout_mode = 2
+
+[node name="CharacterSliderRow" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 18
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryInfoMenu/VBoxContainer/CharacterSliderRow"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer/CharacterSliderRow/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasteryInfoMenu/VBoxContainer/CharacterSliderRow/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BodyRow" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 26
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_u501w")
+
+[node name="Label2" type="Label" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = " Level 0 — 100 XP to next level"
+label_settings = SubResource("LabelSettings_oyrxj")
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+
+[node name="MarginContainer" type="MarginContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryInfoMenu/VBoxContainer/BodyRow/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_jqp3a")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="MasteryInfoMenu/MarginContainer/VBoxContainer/HeaderRow/HBoxContainer/PanelContainer" to="MasteryInfoMenu" method="close_button_clicked"]
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="close_button_clicked"]

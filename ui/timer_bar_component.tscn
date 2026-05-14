@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/timer_bar.png" id="1_q48xg"]
+[ext_resource type="Texture2D" path="res://assets/images/timer_bar_fill.png" id="2_chdpn"]
+[ext_resource type="Script" path="res://ui/timer_bar_component.gd" id="3_q8agx"]
+
+[node name="TimerBarComponent" type="TextureProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -6.0
+offset_right = 96.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_under = ExtResource("1_q48xg")
+texture_progress = ExtResource("2_chdpn")
+script = ExtResource("3_q8agx")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="timer_elapsed"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/effect_tooltip.gd" id="1_5lr5l"]
+[ext_resource type="Texture2D" path="res://assets/images/Kurosaki Ichigo/ichigo3.png" id="2_2xm5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o24ml"]
+bg_color = Color(0.498039, 0.498039, 0.498039, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y6e2b"]
+line_spacing = 0.0
+font_size = 13
+font_color = Color(0.964706, 0.964706, 0.964706, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="EffectTooltip" type="PanelContainer" node_paths=PackedStringArray("texture")]
+custom_minimum_size = Vector2(25, 25)
+layout_direction = 2
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_o24ml")
+script = ExtResource("1_5lr5l")
+texture = NodePath("TooltipMargin/TooltipTexture")
+
+[node name="TooltipMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TooltipTexture" type="TextureRect" parent="TooltipMargin"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_2xm5g")
+expand_mode = 1
+
+[node name="TooltipMagDisplay" type="Label" parent="TooltipMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_y6e2b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

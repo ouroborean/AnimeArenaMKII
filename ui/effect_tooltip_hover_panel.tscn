@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ui/effect_tooltip_hover_panel.gd" id="1_rrt3m"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="2_gv2u0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy0dn"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.698039, 0, 0.0313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glq50"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqefd"]
+line_spacing = 0.0
+font = ExtResource("2_gv2u0")
+font_size = 12
+font_color = Color(0.878431, 0.878431, 0.878431, 1)
+
+[node name="EffectTooltipHoverPanel" type="PanelContainer" node_paths=PackedStringArray("row_container", "name_label")]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -13.5
+offset_right = 98.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jy0dn")
+script = ExtResource("1_rrt3m")
+row_container = NodePath("PanelBody/VBoxContainer")
+name_label = NodePath("PanelBody/VBoxContainer/PanelContainer4/MarginContainer/EffectName")
+
+[node name="PanelBody" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelBody"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelBody/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glq50")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBody/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="EffectName" type="Label" parent="PanelBody/VBoxContainer/PanelContainer4/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0.878431, 0.890196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Sample Effect Title"
+label_settings = SubResource("LabelSettings_pqefd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

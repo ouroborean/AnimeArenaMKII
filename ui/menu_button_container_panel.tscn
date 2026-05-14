@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/menu_button_container_panel.gd" id="1_eutsc"]
+[ext_resource type="PackedScene" path="res://ui/menu_button.tscn" id="2_a6y8y"]
+
+[node name="MenuButtonContainerPanel" type="MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_eutsc")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="MenuButton" parent="GridContainer" instance=ExtResource("2_a6y8y")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuButton2" parent="GridContainer" instance=ExtResource("2_a6y8y")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuButton3" parent="GridContainer" instance=ExtResource("2_a6y8y")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuButton4" parent="GridContainer" instance=ExtResource("2_a6y8y")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/button.png" id="1_gu0hn"]
+[ext_resource type="Script" path="res://ui/turn_end_button.gd" id="1_l1dgw"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_t5hma"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1snx"]
+texture = ExtResource("1_gu0hn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dr1pn"]
+line_spacing = 0.0
+font = ExtResource("2_t5hma")
+
+[node name="TurnEndButton" type="PanelContainer"]
+custom_minimum_size = Vector2(219, 35)
+offset_right = 193.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_p1snx")
+script = ExtResource("1_l1dgw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 35
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 1
+text = "Waiting..."
+label_settings = SubResource("LabelSettings_dr1pn")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="set_hovered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="stop_hovered"]

@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="1_cphg4"]
+[ext_resource type="Script" path="res://ui/nexus_universe_character_panel.gd" id="1_ettil"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_q2goq"]
+[ext_resource type="Texture2D" path="res://assets/ui/nexus_homepage/nexus very top border.png" id="2_wxpgp"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="3_k1735"]
+[ext_resource type="PackedScene" path="res://ui/contribution_button_panel.tscn" id="4_dfv12"]
+[ext_resource type="Texture2D" path="res://assets/ui/Anime_View/back button.png" id="5_rhsym"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0q31a"]
+texture = ExtResource("2_wxpgp")
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2sny"]
+font = ExtResource("2_q2goq")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_bb3wi"]
+font = ExtResource("3_k1735")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ettil")
+
+[node name="NexusUniverseCharacterPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -9
+
+[node name="PanelContainer" type="PanelContainer" parent="NexusUniverseCharacterPanel"]
+z_index = 1
+custom_minimum_size = Vector2(566, 409)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_0q31a")
+
+[node name="MarginContainer" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All Characters"
+label_settings = SubResource("LabelSettings_y2sny")
+text_overrun_behavior = 3
+
+[node name="Label2" type="Label" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "69"
+label_settings = SubResource("LabelSettings_bb3wi")
+horizontal_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="TextureButton" type="TextureButton" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("5_rhsym")
+
+[node name="MarginContainer2" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer2/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NexusUniverseCharacterPanel"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="TextureButton" type="TextureButton" parent="NexusUniverseCharacterPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("1_cphg4")
+
+[node name="HBoxContainer" parent="." instance=ExtResource("4_dfv12")]
+visible = false
+layout_mode = 1
+offset_left = -136.5
+offset_top = -70.5
+offset_right = 136.5
+offset_bottom = 70.5
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="mouse_entered" from="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/TextureButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/TextureButton" to="." method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="NexusUniverseCharacterPanel/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/TextureButton" to="." method="back_button_pressed"]
+[connection signal="mouse_entered" from="NexusUniverseCharacterPanel/MarginContainer/TextureButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="NexusUniverseCharacterPanel/MarginContainer/TextureButton" to="." method="_on_close_button_mouse_exited"]
+[connection signal="pressed" from="NexusUniverseCharacterPanel/MarginContainer/TextureButton" to="." method="close_clicked"]
+[connection signal="close_contribution_panel" from="HBoxContainer" to="." method="close_contribution_panel"]
+[connection signal="contribute_amount" from="HBoxContainer" to="." method="receive_contribution"]

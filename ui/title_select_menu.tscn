@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/titles panel.png" id="1_0oju4"]
+[ext_resource type="Script" path="res://ui/title_select_menu.gd" id="1_c5clc"]
+[ext_resource type="Script" path="res://ui/title_builder_panel.gd" id="2_0htx1"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_deydu"]
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="5_qyao3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ky3y"]
+texture = ExtResource("1_0oju4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_newww"]
+font = ExtResource("3_deydu")
+font_size = 24
+font_color = Color(0.584314, 0.584314, 0.584314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkxil"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 0.294118)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384314, 0.0196078, 0, 1)
+border_blend = true
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il0nv"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 0.294118)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384314, 0.0196078, 0, 1)
+border_blend = true
+shadow_offset = Vector2(2, 2)
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 600.0
+offset_bottom = 400.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -15
+script = ExtResource("1_c5clc")
+
+[node name="Control" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_6ky3y")
+
+[node name="FullMargin" type="MarginContainer" parent="Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/FullMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HeaderMargin" type="MarginContainer" parent="Control/FullMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/FullMargin/VBoxContainer/HeaderMargin"]
+layout_mode = 2
+
+[node name="HeaderRow" type="MarginContainer" parent="Control/FullMargin/VBoxContainer/HeaderMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/FullMargin/VBoxContainer/HeaderMargin/VBoxContainer/HeaderRow"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleDisplayLabel" type="Label" parent="Control/FullMargin/VBoxContainer/HeaderMargin/VBoxContainer/HeaderRow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.7
+text = "Hero of Konoha"
+label_settings = SubResource("LabelSettings_newww")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TitleBuilderMargin" type="MarginContainer" parent="Control/FullMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/FullMargin/VBoxContainer/TitleBuilderMargin"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_hkxil")
+script = ExtResource("2_0htx1")
+
+[node name="PanelInnerMargin" type="MarginContainer" parent="Control/FullMargin/VBoxContainer/TitleBuilderMargin/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_right = 35
+
+[node name="BuilderHBox" type="HBoxContainer" parent="Control/FullMargin/VBoxContainer/TitleBuilderMargin/PanelContainer/PanelInnerMargin"]
+layout_mode = 2
+
+[node name="TitleStorageMargin" type="MarginContainer" parent="Control/FullMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TileStoragePanel" type="PanelContainer" parent="Control/FullMargin/VBoxContainer/TitleStorageMargin"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_il0nv")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/FullMargin/VBoxContainer/TitleStorageMargin/TileStoragePanel"]
+layout_mode = 2
+
+[node name="TileStorageInnerMargin" type="MarginContainer" parent="Control/FullMargin/VBoxContainer/TitleStorageMargin/TileStoragePanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="GridContainer" type="GridContainer" parent="Control/FullMargin/VBoxContainer/TitleStorageMargin/TileStoragePanel/ScrollContainer/TileStorageInnerMargin"]
+layout_mode = 2
+columns = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 22
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("5_qyao3")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="title_dropped" from="Control/FullMargin/VBoxContainer/TitleBuilderMargin/PanelContainer" to="." method="accept_new_title_component"]
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="close_button_pressed"]

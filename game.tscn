@@ -1,0 +1,457 @@
+[gd_scene load_steps=34 format=3 uid="uid://c414ouukxd8v8"]
+
+[ext_resource type="Script" uid="uid://cllg7dm6ud0i2" path="res://game.gd" id="1_tqkfp"]
+[ext_resource type="Texture2D" uid="uid://bsfp803l7m5t" path="res://assets/ui/login/aabackground.png" id="2_chsvg"]
+[ext_resource type="Script" uid="uid://debvofrhao5di" path="res://components/server_connection.gd" id="2_fxwqy"]
+[ext_resource type="PackedScene" path="res://scenes/char_select_scene.tscn" id="3_abyqm"]
+[ext_resource type="PackedScene" path="res://scenes/battle_scene.tscn" id="4_2goxm"]
+[ext_resource type="Script" uid="uid://dkp6ni0tr635c" path="res://ui/username_box.gd" id="6_7tddo"]
+[ext_resource type="PackedScene" path="res://components/bucket_handler.tscn" id="6_doaa1"]
+[ext_resource type="Texture2D" uid="uid://cjg8f4fxly0dw" path="res://assets/ui/login/loginpanel.png" id="6_m8vgt"]
+[ext_resource type="Script" uid="uid://xnfymjwyxix7" path="res://ui/password_box.gd" id="7_727ik"]
+[ext_resource type="FontFile" uid="uid://4pjhvgcgixac" path="res://assets/ROBOTO-BOLD.TTF" id="7_juctt"]
+[ext_resource type="Texture2D" uid="uid://cf7loatyxwghw" path="res://assets/ui/login/registerbutton.png" id="10_26l75"]
+[ext_resource type="Texture2D" uid="uid://oqe0t055pg1b" path="res://assets/ui/login/sign in button.png" id="11_drwjr"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="12_06hiw"]
+[ext_resource type="Texture2D" uid="uid://bd0vmq4h1tjso" path="res://assets/ui/blankbutton.png" id="14_wln8j"]
+[ext_resource type="Script" uid="uid://cfrxtnikud0is" path="res://ui/keyboard.gd" id="15_7sc4i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qwus"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n58qx"]
+texture = ExtResource("6_m8vgt")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jx8ut"]
+font = ExtResource("7_juctt")
+font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuxlb"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.690196, 0.0117647, 0.0156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5405"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx8uj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.690196, 0.0117647, 0.0156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bueq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h30ik"]
+bg_color = Color(0.223529, 0.109804, 0.109804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.709804, 0, 0.117647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yn5p"]
+font = ExtResource("7_juctt")
+font_size = 15
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjfyv"]
+texture = ExtResource("11_drwjr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_da6rk"]
+texture = ExtResource("10_26l75")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugocx"]
+texture = ExtResource("6_m8vgt")
+
+[sub_resource type="LabelSettings" id="LabelSettings_td7uq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3mttf"]
+font = ExtResource("12_06hiw")
+font_size = 29
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqoeb"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4njd"]
+bg_color = Color(1, 0.235294, 0.262745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80cx4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e8heu"]
+font = ExtResource("12_06hiw")
+
+[node name="Game" type="Control" node_paths=PackedStringArray("server", "char_select_scene", "battle_scene")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqkfp")
+server = NodePath("ServerConnection")
+char_select_scene = NodePath("CharSelectScene")
+battle_scene = NodePath("BattleScene")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -50
+custom_minimum_size = Vector2(890, 600)
+layout_mode = 0
+offset_right = 770.0
+offset_bottom = 570.0
+texture = ExtResource("2_chsvg")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -50
+custom_minimum_size = Vector2(890, 600)
+layout_mode = 0
+offset_left = 890.0
+offset_right = 1780.0
+offset_bottom = 600.0
+texture = ExtResource("2_chsvg")
+
+[node name="Control" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 389.0
+offset_bottom = 60.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Server"
+label_settings = SubResource("LabelSettings_5qwus")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="ServerConnection" type="Node" parent="." node_paths=PackedStringArray("bucket_handler", "heartbeat_timer")]
+script = ExtResource("2_fxwqy")
+is_server = true
+bucket_handler = NodePath("../BucketHandler")
+heartbeat_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="ServerConnection"]
+wait_time = 10.0
+
+[node name="CharSelectScene" parent="." instance=ExtResource("3_abyqm")]
+layout_mode = 1
+
+[node name="BattleScene" parent="." instance=ExtResource("4_2goxm")]
+layout_mode = 1
+
+[node name="BucketHandler" parent="." node_paths=PackedStringArray("server") instance=ExtResource("6_doaa1")]
+server = NodePath("../ServerConnection")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(472, 227)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -113.5
+offset_right = 236.0
+offset_bottom = 113.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n58qx")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = " "
+label_settings = SubResource("LabelSettings_jx8ut")
+
+[node name="UsernameBox" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_vertical = 4
+focus_next = NodePath("../PasswordBox")
+focus_previous = NodePath("../PasswordBox")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.419608, 0.419608, 0.419608, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wuxlb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_d5405")
+placeholder_text = "Username
+"
+script = ExtResource("6_7tddo")
+
+[node name="PasswordBox" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_vertical = 4
+focus_next = NodePath("../UsernameBox")
+focus_previous = NodePath("../UsernameBox")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.403922, 0.403922, 0.403922, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jx8uj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3bueq")
+placeholder_text = "Password
+"
+secret = true
+script = ExtResource("7_727ik")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.847059, 0, 0.176471, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_h30ik")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Auto-Login"
+label_settings = SubResource("LabelSettings_2yn5p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(145, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_qjfyv")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(145, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_da6rk")
+
+[node name="UpdateBlotter" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(472, 227)
+layout_mode = 0
+offset_left = 185.0
+offset_top = 200.0
+offset_right = 657.0
+offset_bottom = 427.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ugocx")
+
+[node name="MarginContainer" type="MarginContainer" parent="UpdateBlotter"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpdateBlotter/MarginContainer"]
+layout_mode = 2
+
+[node name="UpdateLabel" type="Label" parent="UpdateBlotter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Updates required! Please wait while patching..."
+label_settings = SubResource("LabelSettings_td7uq")
+horizontal_alignment = 1
+
+[node name="LoadingLabel" type="Label" parent="UpdateBlotter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "LOADING..."
+label_settings = SubResource("LabelSettings_3mttf")
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UpdateBlotter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_gqoeb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x4njd")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(227, 200)
+scale = Vector2(6.73437, 0.666667)
+texture_normal = ExtResource("14_wln8j")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(230, 254)
+scale = Vector2(6.73437, 0.666667)
+texture_normal = ExtResource("14_wln8j")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 451.0
+offset_right = 674.0
+offset_bottom = 570.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_80cx4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Open Internal Keyboard"
+label_settings = SubResource("LabelSettings_e8heu")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 418.0
+offset_right = 843.0
+offset_bottom = 592.0
+script = ExtResource("15_7sc4i")
+
+[connection signal="gui_input" from="Control/PanelContainer" to="ServerConnection" method="start_server"]
+[connection signal="char_select" from="ServerConnection" to="." method="load_texture"]
+[connection signal="character_bucket_info_broadcast" from="ServerConnection" to="BucketHandler" method="receive_character_bucket_information"]
+[connection signal="connection_complete" from="ServerConnection" to="." method="auto_login_check"]
+[connection signal="connection_ready" from="ServerConnection" to="." method="start_connection"]
+[connection signal="end_queue" from="ServerConnection" to="CharSelectScene" method="cancel_queue"]
+[connection signal="force_login_return" from="ServerConnection" to="." method="dc_to_login"]
+[connection signal="inform_updating" from="ServerConnection" to="." method="receive_update_notification"]
+[connection signal="opponent_ban_received" from="ServerConnection" to="CharSelectScene" method="receive_opponent_ban"]
+[connection signal="opponent_pick_received" from="ServerConnection" to="CharSelectScene" method="receive_opponent_pick"]
+[connection signal="opponent_surrendered" from="ServerConnection" to="BattleScene" method="receive_surrender"]
+[connection signal="player_connected" from="ServerConnection" to="." method="add_peer_label"]
+[connection signal="player_update_received" from="ServerConnection" to="CharSelectScene" method="receive_player_update"]
+[connection signal="private_match_received" from="ServerConnection" to="CharSelectScene" method="accept_private_match"]
+[connection signal="prompt_restart" from="ServerConnection" to="." method="receive_update_completion"]
+[connection signal="quick_match_received" from="ServerConnection" to="CharSelectScene" method="accept_quick_match"]
+[connection signal="ranked_match_received" from="ServerConnection" to="CharSelectScene" method="accept_ranked_match"]
+[connection signal="reconnection_package_received" from="ServerConnection" to="CharSelectScene" method="receive_reconnection_package"]
+[connection signal="spectate_init_received" from="ServerConnection" to="CharSelectScene" method="receive_spectate_init_package"]
+[connection signal="request_game_refresh" from="ServerConnection" to="." method="reload"]
+[connection signal="return_texture" from="ServerConnection" to="CharSelectScene" method="receive_avatar_texture"]
+[connection signal="server_start" from="ServerConnection" to="." method="start_server"]
+[connection signal="set_login_message" from="ServerConnection" to="." method="set_login_message"]
+[connection signal="state_hash_requested" from="ServerConnection" to="BattleScene" method="handle_state_hash_request"]
+[connection signal="apply_turn_result_received" from="ServerConnection" to="BattleScene" method="handle_apply_turn_result"]
+[connection signal="timeout" from="ServerConnection/Timer" to="ServerConnection" method="heartbeat_check"]
+[connection signal="character_loading_finished" from="CharSelectScene" to="." method="open_char_select"]
+[connection signal="clan_application_received" from="CharSelectScene" to="ServerConnection" method="send_clan_application"]
+[connection signal="clan_invitation_received" from="CharSelectScene" to="ServerConnection" method="send_player_invite"]
+[connection signal="finalize_avatar_data" from="CharSelectScene" to="ServerConnection" method="finalize_avatar_update"]
+[connection signal="queue_private_match" from="CharSelectScene" to="ServerConnection" method="queue_private_match"]
+[connection signal="queue_quick_match" from="CharSelectScene" to="ServerConnection" method="queue_quick_match"]
+[connection signal="queue_ranked_match" from="CharSelectScene" to="ServerConnection" method="queue_ranked_match"]
+[connection signal="reconnect_to_match" from="CharSelectScene" to="ServerConnection" method="attempt_match_reconnect"]
+[connection signal="request_avatar_update" from="CharSelectScene" to="ServerConnection" method="finalize_avatar_update"]
+[connection signal="request_character_buckets" from="CharSelectScene" to="BucketHandler" method="get_character_buckets"]
+[connection signal="request_clan_application_invite_info" from="CharSelectScene" to="ServerConnection" method="request_clan_application_invite_info"]
+[connection signal="request_clan_creation" from="CharSelectScene" to="ServerConnection" method="send_clan_creation_request"]
+[connection signal="request_ladder_details" from="CharSelectScene" to="ServerConnection" method="send_ladder_request"]
+[connection signal="request_leaderboard_concepts" from="CharSelectScene" to="ServerConnection" method="send_leaderboard_request"]
+[connection signal="request_new_version" from="CharSelectScene" to="ServerConnection" method="check_latest_client_version"]
+[connection signal="request_player_application_invite_info" from="CharSelectScene" to="ServerConnection" method="request_player_application_invite_info"]
+[connection signal="save_cosmetic_changes" from="CharSelectScene" to="ServerConnection" method="update_cosmetics"]
+[connection signal="send_bucket_update" from="CharSelectScene" to="BucketHandler" method="receive_bucket_update_client"]
+[connection signal="send_cancel_clan_application" from="CharSelectScene" to="ServerConnection" method="send_clan_application_cancel"]
+[connection signal="send_cancel_clan_invitation" from="CharSelectScene" to="ServerConnection" method="send_player_invitation_cancel"]
+[connection signal="send_clan_info_request" from="CharSelectScene" to="ServerConnection" method="request_clan_info"]
+[connection signal="send_clan_offer_accepted" from="CharSelectScene" to="ServerConnection" method="send_clan_offer_accepted"]
+[connection signal="send_clan_search_request" from="CharSelectScene" to="ServerConnection" method="request_clan_search"]
+[connection signal="send_demotion" from="CharSelectScene" to="ServerConnection" method="receive_demotion"]
+[connection signal="send_kick" from="CharSelectScene" to="ServerConnection" method="receive_kick"]
+[connection signal="send_leave" from="CharSelectScene" to="ServerConnection" method="receive_leave"]
+[connection signal="send_player_search_request" from="CharSelectScene" to="ServerConnection" method="request_player_search"]
+[connection signal="send_promotion" from="CharSelectScene" to="ServerConnection" method="receive_promotion"]
+[connection signal="send_queue_cancellation" from="CharSelectScene" to="ServerConnection" method="send_queue_cancellation"]
+[connection signal="start_battle" from="CharSelectScene" to="." method="start_battle"]
+[connection signal="start_battle_reconnect" from="CharSelectScene" to="." method="start_battle_with_reconnect"]
+[connection signal="start_battle_spectate" from="CharSelectScene" to="." method="start_battle_spectate"]
+[connection signal="start_replay" from="CharSelectScene" to="." method="start_replay"]
+[connection signal="spectate_requested" from="CharSelectScene" to="ServerConnection" method="send_spectate_request"]
+[connection signal="update_player" from="CharSelectScene" to="ServerConnection" method="update_cosmetics"]
+[connection signal="char_select_return" from="BattleScene" to="." method="return_to_char_select"]
+[connection signal="match_ended" from="BattleScene" to="ServerConnection" method="report_match_ending"]
+[connection signal="save_mission_progress" from="BattleScene" to="ServerConnection" method="update_missions"]
+[connection signal="send_save_player" from="BattleScene" to="ServerConnection" method="update_cosmetics"]
+[connection signal="send_surrender" from="BattleScene" to="ServerConnection" method="send_surrender"]
+[connection signal="turn_ended" from="BattleScene" to="ServerConnection" method="send_turn_input"]
+[connection signal="state_hash_ready" from="BattleScene" to="ServerConnection" method="send_state_hash"]
+[connection signal="energy_exchange_requested" from="BattleScene" to="ServerConnection" method="send_energy_exchange"]
+[connection signal="replay_save_requested" from="BattleScene" to="ServerConnection" method="send_replay_request"]
+[connection signal="replay_saved" from="ServerConnection" to="BattleScene" method="_on_replay_saved"]
+[connection signal="connection_lost" from="ServerConnection" to="." method="_show_reconnect_overlay"]
+[connection signal="session_reconnect_received" from="ServerConnection" to="." method="handle_session_reconnect"]
+[connection signal="connection_lost_resolved" from="ServerConnection" to="." method="_on_connection_lost_resolved"]
+[connection signal="broadcast_leaderboard_sets" from="BucketHandler" to="CharSelectScene" method="open_nexus_panel"]
+[connection signal="broadcast_player_contribution" from="BucketHandler" to="ServerConnection" method="send_player_contribution"]
+[connection signal="client_disconnected" from="BucketHandler" to="." method="attempt_server_connect_loop"]
+[connection signal="request_character_buckets" from="BucketHandler" to="ServerConnection" method="request_character_buckets"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="login_click"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer3" to="." method="register_click"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="mobile_touch_username"]
+[connection signal="pressed" from="TouchScreenButton2" to="." method="mobile_touch_password"]
+[connection signal="gui_input" from="PanelContainer2" to="." method="open_keyboard"]
+[connection signal="letter_action" from="GridContainer" to="." method="_on_grid_container_send_letter"]

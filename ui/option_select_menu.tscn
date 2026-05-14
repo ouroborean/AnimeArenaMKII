@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/option_select_menu.gd" id="1_pawfq"]
+[ext_resource type="PackedScene" path="res://ui/text_panel.tscn" id="1_wauk7"]
+
+[node name="OptionSelectMenu" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pawfq")
+
+[node name="TextPanel" parent="." instance=ExtResource("1_wauk7")]
+layout_mode = 2

@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/Team_Kakashi.png" id="1_mosu7"]
+[ext_resource type="Script" path="res://ui/mission_description_panel.gd" id="1_n2ua0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0vc1"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.937255, 0.937255, 0.937255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5phe"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8brt"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_mu357"]
+font_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nr71"]
+bg_color = Color(0.439216, 0, 0.0431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.976471, 0.976471, 0.976471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fony"]
+line_spacing = 0.0
+font_size = 10
+
+[node name="MissionDescriptionPanel" type="PanelContainer" node_paths=PackedStringArray("objective_description_container", "mission_texture", "mission_title_label", "mission_rank_req_label", "mission_description_label", "mission_reward_container")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = -195.5
+offset_right = 283.0
+offset_bottom = 195.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0vc1")
+script = ExtResource("1_n2ua0")
+objective_description_container = NodePath("MarginContainer/HBoxContainer/ImageObjectiveColumn/MarginContainer/VBoxContainer")
+mission_texture = NodePath("MarginContainer/HBoxContainer/ImageObjectiveColumn/TextureRect")
+mission_title_label = NodePath("MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer/MissionTitle")
+mission_rank_req_label = NodePath("MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer/MissionRankReq")
+mission_description_label = NodePath("MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer/MissionDescription")
+mission_reward_container = NodePath("MarginContainer/HBoxContainer/InfoColumn/MissionRewardMargin/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 17
+theme_override_constants/margin_bottom = 17
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="InfoColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissionInfoMargin" type="MarginContainer" parent="MarginContainer/HBoxContainer/InfoColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MissionTitle" type="Label" parent="MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer"]
+layout_mode = 2
+text = "The Sharingan Sensei"
+
+[node name="MissionRankReq" type="Label" parent="MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer"]
+layout_mode = 2
+text = "Rank Required: Bronze"
+label_settings = SubResource("LabelSettings_a5phe")
+
+[node name="MissionDescription" type="Label" parent="MarginContainer/HBoxContainer/InfoColumn/MissionInfoMargin/VBoxContainer"]
+layout_mode = 2
+text = "Kakashi Hatake, one of the Leaf Village's most well-known Jonin, has just been assigned to teach Team 7. Faced with a clumsy showoff, a vengeful genius, and a girl more interested in boys than ninjutsu, Kakashi has decided to put his new Genin to the test."
+label_settings = SubResource("LabelSettings_r8brt")
+autowrap_mode = 2
+
+[node name="MissionRewardMargin" type="MarginContainer" parent="MarginContainer/HBoxContainer/InfoColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InfoColumn/MissionRewardMargin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/InfoColumn/MissionRewardMargin/VBoxContainer"]
+layout_mode = 2
+text = "Rewards:"
+label_settings = SubResource("LabelSettings_mu357")
+horizontal_alignment = 1
+
+[node name="RewardName" type="Label" parent="MarginContainer/HBoxContainer/InfoColumn/MissionRewardMargin/VBoxContainer"]
+layout_mode = 2
+text = "Reward Name
+"
+horizontal_alignment = 1
+
+[node name="ImageObjectiveColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ImageObjectiveColumn"]
+custom_minimum_size = Vector2(300, 210)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("1_mosu7")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ImageObjectiveColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ImageObjectiveColumn/MarginContainer"]
+layout_mode = 2
+
+[node name="XButton" type="PanelContainer" parent="."]
+z_index = 3
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nr71")
+
+[node name="MarginContainer" type="MarginContainer" parent="XButton"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="XButton/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 1
+text = "x"
+label_settings = SubResource("LabelSettings_1fony")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="XButton" to="." method="_on_x_button_gui_input"]

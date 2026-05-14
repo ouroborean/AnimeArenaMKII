@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/nexus_universe_node.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_title"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+content_margin_left = 8
+content_margin_top = 5
+content_margin_right = 8
+content_margin_bottom = 5
+
+[node name="NexusUniverseNode" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 30)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tab")
+script = ExtResource("1_script")
+
+[node name="UniverseLabel" type="Label" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_title")
+theme_override_font_sizes/font_size = 14
+text = "Hunter x Hunter"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://mnldhfx5u8w7"]
+
+[ext_resource type="Script" uid="uid://bdkq0ctdtajpt" path="res://ui/active_bounty_button.gd" id="1_0qx8o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwd7l"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ActiveBountyButton" type="PanelContainer"]
+custom_minimum_size = Vector2(44, 44)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwd7l")
+script = ExtResource("1_0qx8o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

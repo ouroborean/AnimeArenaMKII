@@ -1,0 +1,217 @@
+[gd_scene load_steps=8 format=3 uid="uid://gci4xam11mq6"]
+
+[ext_resource type="Script" uid="uid://dd7jtn0pn2rdj" path="res://ui/shop_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cnbnf8gx6xtfj" path="res://assets/ui/nexus_homepage/nexus very top border.png" id="2_border"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_title"]
+[ext_resource type="FontFile" uid="uid://4pjhvgcgixac" path="res://assets/ROBOTO-BOLD.TTF" id="4_header"]
+[ext_resource type="Texture2D" uid="uid://lpqgo7hjug0h" path="res://assets/ui/nexus_homepage/close panel button.png" id="6_close"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_border")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_accent"]
+bg_color = Color(0.698039, 0.219608, 0.231373, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_script")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -270.0
+offset_right = 440.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -10
+
+[node name="PanelBG" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(850, 540)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="BGMargin" type="MarginContainer" parent="HBoxContainer/PanelBG"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="HBoxContainer/PanelBG/BGMargin"]
+z_index = -1
+layout_mode = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="HBoxContainer/PanelBG"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="MainVBox" type="VBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderRow" type="MarginContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 56
+
+[node name="HeaderBox" type="HBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/HeaderRow"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/HeaderRow/HeaderBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_title")
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+
+[node name="APLabel" type="Label" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/HeaderRow/HeaderBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_title")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+
+[node name="BodyContent" type="HBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CategoryColumn" type="VBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CategoryHeader" type="Label" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 16
+text = "Categories"
+
+[node name="CategoryScroll" type="ScrollContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CategoryList" type="VBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="SkillPanelButton" type="Button" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 14
+text = "Action Panels"
+
+[node name="CharFrameButton" type="Button" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 14
+text = "Character Frames"
+
+[node name="CharacterButton" type="Button" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList"]
+visible = false
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 14
+text = "Characters"
+
+[node name="BackgroundButton" type="Button" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 14
+text = "Backgrounds"
+
+[node name="PlayerCardButton" type="Button" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 14
+text = "Player Cards"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent"]
+layout_mode = 2
+
+[node name="ItemColumn" type="VBoxContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 6
+
+[node name="ItemHeader" type="Label" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/ItemColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_header")
+theme_override_font_sizes/font_size = 16
+text = "Items"
+
+[node name="AccentBar" type="Panel" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/ItemColumn"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_accent")
+
+[node name="ItemScroll" type="ScrollContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/ItemColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemGrid" type="GridContainer" parent="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/ItemColumn/ItemScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="CloseMargin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 47
+
+[node name="CloseButton" type="TextureButton" parent="HBoxContainer/CloseMargin"]
+layout_mode = 2
+texture_normal = ExtResource("6_close")
+
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[connection signal="pressed" from="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList/SkillPanelButton" to="." method="skill_panel_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList/CharFrameButton" to="." method="char_frame_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList/CharacterButton" to="." method="char_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList/BackgroundButton" to="." method="background_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelBG/ContentMargin/MainVBox/BodyContent/CategoryColumn/CategoryScroll/CategoryList/PlayerCardButton" to="." method="playercard_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/CloseMargin/CloseButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/CloseMargin/CloseButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/CloseMargin/CloseButton" to="." method="close_clicked"]

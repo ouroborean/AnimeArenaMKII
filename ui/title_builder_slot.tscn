@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/title_builder_slot.gd" id="1_xqf8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ewc"]
+bg_color = Color(0.517647, 0, 0.0352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3r8o"]
+
+[node name="TitleBuilderSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(75, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5ewc")
+script = ExtResource("1_xqf8e")
+
+[node name="BuilderMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BuilderMargin"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Drag Title Here"
+label_settings = SubResource("LabelSettings_j3r8o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

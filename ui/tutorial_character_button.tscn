@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/tutorial_character_button.gd" id="1_oxte4"]
+[ext_resource type="Texture2D" path="res://assets/images/Sheele/sheeleprof.png" id="1_xybt2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du3oq"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="PanelContainer"]
+custom_minimum_size = Vector2(79, 79)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -39.5
+offset_right = 39.5
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_du3oq")
+script = ExtResource("1_oxte4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_xybt2")
+expand_mode = 1

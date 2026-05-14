@@ -1,0 +1,270 @@
+[gd_scene load_steps=24 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/userinformationpanel.png" id="1_rhmtt"]
+[ext_resource type="Script" path="res://ui/player_info_panel2.gd" id="2_thqr7"]
+[ext_resource type="Texture2D" path="res://assets/avatars/angywendy.png" id="3_ut36n"]
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/Ap coin icon that goes under user stats.png" id="4_5ygs7"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="5_ooehv"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-REGULAR.TTF" id="6_rvjlc"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/enterappanel.png" id="7_nglva"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="8_hm1ar"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/confirm button.png" id="9_br2ax"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/decline button.png" id="10_qw2do"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nik4"]
+texture = ExtResource("1_rhmtt")
+texture_margin_bottom = 6.0
+expand_margin_top = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuipg"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5o3wp"]
+font = ExtResource("5_ooehv")
+font_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_xm8y3"]
+line_spacing = 0.0
+font = ExtResource("6_rvjlc")
+font_size = 12
+font_color = Color(0.909804, 0.278431, 0.301961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybnno"]
+line_spacing = 0.0
+font = ExtResource("6_rvjlc")
+font_size = 12
+outline_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vepvw"]
+line_spacing = 0.0
+font = ExtResource("6_rvjlc")
+font_size = 12
+outline_color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3xyf"]
+line_spacing = 0.0
+font = ExtResource("6_rvjlc")
+font_size = 12
+outline_color = Color(0.0117647, 0.0117647, 0.0117647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qsehc"]
+line_spacing = 0.0
+font = ExtResource("6_rvjlc")
+font_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hh1hr"]
+texture = ExtResource("7_nglva")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhwg5"]
+font = ExtResource("8_hm1ar")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rp0dt"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_baxul"]
+texture = ExtResource("9_br2ax")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkd3r"]
+texture = ExtResource("10_qw2do")
+
+[node name="PlayerInfoPanel" type="PanelContainer" node_paths=PackedStringArray("avatar_texture", "name_label", "rank_label", "clan_label", "level_label", "ladder_label", "ratio_label", "avatar_upload_pane", "ap_label")]
+custom_minimum_size = Vector2(255, 244)
+offset_right = 224.0
+offset_bottom = 216.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_8nik4")
+script = ExtResource("2_thqr7")
+avatar_texture = NodePath("PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar/PlayerTextureMargin/PlayerAvatarTexture")
+name_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/UsernameLabel")
+rank_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/RankLabel")
+clan_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/ClanLabel")
+level_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/LevelLabel")
+ladder_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/LadderLabel")
+ratio_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows/RatioLabel")
+avatar_upload_pane = NodePath("AvatarUploadPane")
+ap_label = NodePath("PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/MarginContainer/HBoxContainer/Label")
+
+[node name="PanelMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Rows" type="VBoxContainer" parent="PanelMargin"]
+layout_mode = 2
+
+[node name="PlayerDisplayRow" type="HBoxContainer" parent="PanelMargin/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.75
+theme_override_constants/separation = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelMargin/Rows/PlayerDisplayRow"]
+layout_mode = 2
+
+[node name="PlayerAvatarMargin" type="MarginContainer" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 32
+
+[node name="PlayerAvatar" type="PanelContainer" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yuipg")
+
+[node name="PlayerTextureMargin" type="MarginContainer" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar"]
+layout_mode = 2
+
+[node name="PlayerAvatarTexture" type="TextureRect" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar/PlayerTextureMargin"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_ut36n")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_5ygs7")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "$2,000,000"
+label_settings = SubResource("LabelSettings_5o3wp")
+vertical_alignment = 1
+
+[node name="PlayerInfoMargin" type="MarginContainer" parent="PanelMargin/Rows/PlayerDisplayRow"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 28
+
+[node name="InfoRows" type="VBoxContainer" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UsernameLabel" type="RichTextLabel" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+layout_mode = 2
+theme_override_fonts/bold_font = ExtResource("5_ooehv")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[b]Ouroborean[/b]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="LadderLabel" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+layout_mode = 2
+text = "Tester"
+label_settings = SubResource("LabelSettings_xm8y3")
+text_overrun_behavior = 4
+
+[node name="RankLabel" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+layout_mode = 2
+text = "Trainee"
+label_settings = SubResource("LabelSettings_ybnno")
+
+[node name="ClanLabel" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+layout_mode = 2
+text = "Clan: The Prism Council"
+label_settings = SubResource("LabelSettings_vepvw")
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="LevelLabel" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+visible = false
+layout_mode = 2
+text = "Level: 1 (0 XP)"
+label_settings = SubResource("LabelSettings_i3xyf")
+
+[node name="RatioLabel" type="Label" parent="PanelMargin/Rows/PlayerDisplayRow/PlayerInfoMargin/InfoRows"]
+layout_mode = 2
+text = "Ratio: 0 - 0 (+0)"
+label_settings = SubResource("LabelSettings_qsehc")
+
+[node name="PlayerTeamMargin" type="MarginContainer" parent="PanelMargin/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelMargin/Rows/PlayerTeamMargin"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="AvatarUploadPane" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hh1hr")
+
+[node name="MarginContainer" type="MarginContainer" parent="AvatarUploadPane"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AvatarUploadPane/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AvatarUploadPane/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = " Avatar URL (PNG only) :"
+label_settings = SubResource("LabelSettings_vhwg5")
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="AvatarUploadPane/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_rp0dt")
+placeholder_text = "https://i.imgur.com/3Vc6oYM.png"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AvatarUploadPane/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 23)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_baxul")
+
+[node name="PanelContainer2" type="PanelContainer" parent="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 23)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkd3r")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar" to="." method="avatar_click"]
+[connection signal="mouse_entered" from="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar" to="." method="_on_player_avatar_mouse_entered"]
+[connection signal="mouse_exited" from="PanelMargin/Rows/PlayerDisplayRow/VBoxContainer/PlayerAvatarMargin/PlayerAvatar" to="." method="_on_player_avatar_mouse_exited"]
+[connection signal="gui_input" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="avatar_accept_click"]
+[connection signal="mouse_entered" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="_on_panel_container_mouse_entered"]
+[connection signal="mouse_exited" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="_on_panel_container_mouse_exited"]
+[connection signal="gui_input" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="avatar_cancel_click"]
+[connection signal="mouse_entered" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_mouse_entered"]
+[connection signal="mouse_exited" from="AvatarUploadPane/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_mouse_exited"]

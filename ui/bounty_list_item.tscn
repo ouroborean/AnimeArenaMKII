@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd778lo8wj5ey"]
+
+[ext_resource type="Script" uid="uid://bbgqkike18esv" path="res://ui/bounty_list_item.gd" id="1_4k3e7"]
+[ext_resource type="Texture2D" uid="uid://nnm1abod2lc3" path="res://assets/images/Abarai Renji/renjiprof.png" id="2_hj56r"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_xvlte"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vn50c"]
+font = ExtResource("3_xvlte")
+font_size = 12
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_left = 5.0
+offset_top = 15.0
+offset_right = 229.0
+offset_bottom = 55.0
+script = ExtResource("1_4k3e7")
+
+[node name="BountyListItem" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BountyListItem"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BountyListItem/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_hj56r")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BountyListItem/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sakura Haruno"
+label_settings = SubResource("LabelSettings_vn50c")
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

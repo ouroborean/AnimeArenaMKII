@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bulgltcbui18c"]
+
+[ext_resource type="Script" uid="uid://dvuibla1odcg3" path="res://ui/mastery_progress_bar.gd" id="1_jemh2"]
+[ext_resource type="FontFile" uid="uid://cftiikkpn6058" path="res://assets/ROBOTO-REGULAR.TTF" id="4_roboto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.12, 0.12, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.35, 0.35, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m15lb"]
+bg_color = Color(0.51837134, 0.008708074, 2.4065375e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_xp"]
+font = ExtResource("4_roboto")
+font_size = 12
+font_color = Color(0.9, 0.9, 0.9, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MasteryProgressBar" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 24)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_jemh2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TextureProgressBar" type="ProgressBar" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_m15lb")
+show_percentage = false
+
+[node name="XPLabel" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xp")
+horizontal_alignment = 1
+vertical_alignment = 1

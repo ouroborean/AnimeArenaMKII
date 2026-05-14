@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://ui/match_found_panel.gd" id="1_37h8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkgmd"]
+bg_color = Color(0, 0.160784, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wu40"]
+font_size = 28
+font_color = Color(0, 0.67451, 0.67451, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wb3mb"]
+font_size = 48
+font_color = Color(0.831373, 0.831373, 0, 1)
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxmhl"]
+font_size = 120
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sd3no"]
+font_size = 48
+font_color = Color(1, 1, 0.180392, 1)
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbl88"]
+font_size = 28
+font_color = Color(0.572549, 0, 0.0627451, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MatchFoundPanel" type="PanelContainer"]
+z_index = 6
+custom_minimum_size = Vector2(500, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -187.0
+offset_right = 250.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dkgmd")
+script = ExtResource("1_37h8i")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerTeamColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerNameLabel" type="Label" parent="MarginContainer/HBoxContainer/PlayerTeamColumn"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_2wu40")
+horizontal_alignment = 1
+
+[node name="CentralInfoColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MatchFoundLabel" type="Label" parent="MarginContainer/HBoxContainer/CentralInfoColumn"]
+layout_mode = 2
+text = "Match Found!"
+label_settings = SubResource("LabelSettings_wb3mb")
+horizontal_alignment = 1
+
+[node name="VSLabel" type="Label" parent="MarginContainer/HBoxContainer/CentralInfoColumn"]
+layout_mode = 2
+text = "VS"
+label_settings = SubResource("LabelSettings_pxmhl")
+horizontal_alignment = 1
+
+[node name="DraftWarningLabel" type="Label" parent="MarginContainer/HBoxContainer/CentralInfoColumn"]
+layout_mode = 2
+text = "Prepare to Draft!"
+label_settings = SubResource("LabelSettings_sd3no")
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/CentralInfoColumn"]
+layout_mode = 2
+max_value = 3.0
+step = -1.0
+value = 3.0
+fill_mode = 1
+show_percentage = false
+
+[node name="EnemyTeamColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyNameLabel" type="Label" parent="MarginContainer/HBoxContainer/EnemyTeamColumn"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_rbl88")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

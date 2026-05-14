@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/title_builder_component.gd" id="1_aptwp"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_nruhq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi3q3"]
+bg_color = Color(0.0392157, 0.0156863, 0.0156863, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.47451, 0, 0.0196078, 1)
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3r8o"]
+font = ExtResource("2_nruhq")
+font_size = 14
+
+[node name="TitleBuilderComponent" type="PanelContainer"]
+custom_minimum_size = Vector2(75, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mi3q3")
+script = ExtResource("1_aptwp")
+
+[node name="BuilderMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BuilderMargin"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_j3r8o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

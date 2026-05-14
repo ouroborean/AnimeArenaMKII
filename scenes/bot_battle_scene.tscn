@@ -1,0 +1,391 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/bot_battle_scene.gd" id="1_hxsq7"]
+[ext_resource type="PackedScene" path="res://ui/message_box_component.tscn" id="2_m0bql"]
+[ext_resource type="PackedScene" path="res://ui/turn_end_button.tscn" id="3_rrwft"]
+[ext_resource type="PackedScene" path="res://ui/timer_bar_component.tscn" id="4_hperd"]
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/surrender button.png" id="5_dkjyn"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="6_j8rls"]
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/settings button.png" id="7_qmnsr"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/background_charselect_default.png" id="8_hxsq7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t17no"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwbay"]
+texture = ExtResource("5_dkjyn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0f0pu"]
+line_spacing = 0.0
+font = ExtResource("6_j8rls")
+font_color = Color(0.698039, 0, 0.0313726, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jucm2"]
+texture = ExtResource("7_qmnsr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbjm"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.843137)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.513726, 0, 0.027451, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rum4d"]
+bg_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_3oc74"]
+font = ExtResource("6_j8rls")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gp0h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g72on"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tttxe"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_a0lpx"]
+specular_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="BattleScene" type="Control" node_paths=PackedStringArray("menu_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hxsq7")
+menu_container = NodePath("UI/MarginContainer/MenuContainer")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MessageBoxComponent" parent="." instance=ExtResource("2_m0bql")]
+z_index = 100
+visible = false
+custom_minimum_size = Vector2(420, 360)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -560.0
+offset_right = -20.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t17no")
+metadata/_edit_use_anchors_ = true
+
+[node name="TickDelayTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="StartupTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="ProfileButtonRow" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+alignment = 1
+
+[node name="SystemColumn" type="VBoxContainer" parent="UI/ProfileButtonRow"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/ProfileButtonRow/SystemColumn"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ProfileButtonRow/SystemColumn/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = -6
+
+[node name="TurnEndButton" parent="UI/ProfileButtonRow/SystemColumn/MarginContainer/VBoxContainer" instance=ExtResource("3_rrwft")]
+layout_mode = 2
+
+[node name="TimerBarComponent" parent="UI/ProfileButtonRow/SystemColumn/MarginContainer/VBoxContainer" instance=ExtResource("4_hperd")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = 55
+
+[node name="MenuContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI"]
+layout_mode = 2
+
+[node name="SystemInfoRow" type="HBoxContainer" parent="UI/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(119, 51)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_vwbay")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Surrender"
+label_settings = SubResource("LabelSettings_0f0pu")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+custom_minimum_size = Vector2(119, 51)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_jucm2")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer2"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_0f0pu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionLogButton" type="PanelContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(119, 36)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekbjm")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/ActionLogButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/ActionLogButton/MarginContainer"]
+layout_mode = 2
+text = "Action Log"
+label_settings = SubResource("LabelSettings_0f0pu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekbjm")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "Chat	"
+label_settings = SubResource("LabelSettings_0f0pu")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/MarginContainer2/SystemInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_bottom = 5
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -50
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_hxsq7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+z_index = 250
+layout_mode = 0
+offset_left = 28.0
+offset_top = 377.0
+offset_right = 276.0
+offset_bottom = 486.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rum4d")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Are you sure you would like to surrender?"
+label_settings = SubResource("LabelSettings_3oc74")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gp0h")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "YES"
+label_settings = SubResource("LabelSettings_g72on")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+z_index = 1000
+z_as_relative = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tttxe")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "NO"
+horizontal_alignment = 1
+
+[node name="BlotterContainer" type="PanelContainer" parent="."]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlotterContainer"]
+modulate = Color(0.101961, 0.101961, 0.101961, 0.466667)
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("CanvasTexture_a0lpx")
+
+[node name="BotFakeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="BotCrashTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="message_demand" from="." to="MessageBoxComponent" method="receive_message_demand"]
+[connection signal="message_request" from="." to="MessageBoxComponent" method="receive_message_request"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="turn_end_clicked" from="UI/ProfileButtonRow/SystemColumn/MarginContainer/VBoxContainer/TurnEndButton" to="." method="turn_end_clicked"]
+[connection signal="gui_input" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer" to="." method="surrender_click"]
+[connection signal="mouse_entered" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer" to="." method="surrender_button_hover"]
+[connection signal="mouse_exited" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer" to="." method="surrender_button_stop_hover"]
+[connection signal="gui_input" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_gui_input"]
+[connection signal="gui_input" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/ActionLogButton" to="." method="action_log_button_click"]
+[connection signal="mouse_entered" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/ActionLogButton" to="." method="action_log_button_hover"]
+[connection signal="mouse_exited" from="UI/MarginContainer2/SystemInfoRow/MarginContainer/VBoxContainer/ActionLogButton" to="." method="action_log_button_stop_hover"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="surrender_yes_clicked"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="surrender_yes_hovered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" to="." method="surrender_yes_hover_stopped"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="surrender_no_clicked"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="surrender_no_hovered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" to="." method="surrender_no_hover_stopped"]
+[connection signal="timeout" from="BotFakeTimer" to="." method="bot_fake_timer_timeout"]
+[connection signal="timeout" from="BotCrashTimer" to="." method="_on_bot_crash_timer_timeout"]

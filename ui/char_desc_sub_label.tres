@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://casy2tthl4o4n"]
+
+[ext_resource type="FontFile" uid="uid://cftiikkpn6058" path="res://assets/ROBOTO-REGULAR.TTF" id="1_ctspn"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_ctspn")
+font_size = 13
+font_color = Color(0.572549, 0.572549, 0.572549, 1)
+outline_color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+shadow_size = 0

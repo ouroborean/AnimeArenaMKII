@@ -1,0 +1,480 @@
+[gd_scene load_steps=25 format=3 uid="uid://cdjbcipdji75k"]
+
+[ext_resource type="Texture2D" uid="uid://dptpgduk2wunc" path="res://assets/bounty/bounty_menu_panel.png" id="1_3yd18"]
+[ext_resource type="Texture2D" uid="uid://bp2rn0jn3n1tx" path="res://assets/bounty/rap_sheet_panel.png" id="2_kxt0q"]
+[ext_resource type="Script" uid="uid://cpmvhc56trha5" path="res://ui/bounty_panel.gd" id="2_w5us0"]
+[ext_resource type="Texture2D" uid="uid://bkceolb88s6k0" path="res://assets/bounty/selected_mission_panel.png" id="3_w5us0"]
+[ext_resource type="Texture2D" uid="uid://c2ih1penoxbbr" path="res://assets/images/Neferpitou/neferpitouprof.png" id="4_wxadp"]
+[ext_resource type="Texture2D" uid="uid://de4jwm6eqinje" path="res://assets/ui/char_select/close panel button.png" id="5_7e3uj"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="5_qi7j8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xptei"]
+texture = ExtResource("1_3yd18")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ij4wx"]
+font = ExtResource("5_qi7j8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7e3uj"]
+texture = ExtResource("2_kxt0q")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5us0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4id2"]
+font = ExtResource("5_qi7j8")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_qi7j8"]
+font_size = 14
+font_color = Color(0.641934, 0.641934, 0.641934, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4id2"]
+bg_color = Color(0.23656827, 0.01035086, 0, 1)
+border_width_left = 5
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ts2aj"]
+font = ExtResource("5_qi7j8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxadp"]
+texture = ExtResource("3_w5us0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6aial"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_amk0q"]
+font = ExtResource("5_qi7j8")
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi7j8"]
+bg_color = Color(0, 0.301788, 0.074759535, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_36ypu"]
+font = ExtResource("5_qi7j8")
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts2aj"]
+bg_color = Color(0.31869012, 0.036155354, 0.01183499, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amk0q"]
+bg_color = Color(8.663535e-07, 0.29385963, 0.39763147, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aial"]
+bg_color = Color(0.80081624, 0.6696769, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_w4uw3"]
+font = ExtResource("5_qi7j8")
+font_size = 14
+
+[node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("bounty_selection_panel", "bounty_info_panel", "with_info", "against_info", "with_grid", "against_grid", "accept_button", "cancel_button", "reroll_button", "complete_button", "unlock_tab", "mastery_tab", "unlock_scroll", "mastery_scroll", "unlock_list", "mastery_list", "reward_label")]
+custom_minimum_size = Vector2(825, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.5
+offset_top = -295.5
+offset_right = 248.5
+offset_bottom = 295.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -9
+script = ExtResource("2_w5us0")
+bounty_selection_panel = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox")
+bounty_info_panel = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin")
+with_info = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer/Label2")
+against_info = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer/Label3")
+with_grid = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer/GridContainer")
+against_grid = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer/GridContainer2")
+accept_button = NodePath("BountyPanel/MarginContainer/ButtonRow/AcceptButton")
+cancel_button = NodePath("BountyPanel/MarginContainer/ButtonRow/CancelButton")
+reroll_button = NodePath("BountyPanel/MarginContainer/ButtonRow/RerollButton")
+complete_button = NodePath("BountyPanel/MarginContainer/ButtonRow/CompleteButton")
+unlock_tab = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/UnlockTab")
+mastery_tab = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/MasteryTab")
+unlock_scroll = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/UnlockScroll")
+mastery_scroll = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/MasteryScroll")
+unlock_list = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/UnlockScroll/VBoxContainer")
+mastery_list = NodePath("BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/MasteryScroll/VBoxContainer")
+reward_label = NodePath("BountyPanel/MarginContainer/ButtonRow/RewardLabel")
+
+[node name="BountyPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_xptei")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 51
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ActiveBountyContainer" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/MarginContainer/ActiveBountyContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/MarginContainer/ActiveBountyContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/MarginContainer/ActiveBountyContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Active Bounties"
+label_settings = SubResource("LabelSettings_ij4wx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/MarginContainer/ActiveBountyContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(203, 451)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_7e3uj")
+
+[node name="BountySelectScrollBox" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox"]
+layout_mode = 2
+
+[node name="TabRow" type="HBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="UnlockTab" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4id2")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/UnlockTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/UnlockTab/MarginContainer"]
+layout_mode = 2
+text = "Unlock"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="MasteryTab" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow"]
+modulate = Color(1, 1, 1, 0.4)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4id2")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/MasteryTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/TabRow/MasteryTab/MarginContainer"]
+layout_mode = 2
+text = "Mastery"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="UnlockScroll" type="ScrollContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/UnlockScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/UnlockScroll/VBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Select a Character to see their bounty"
+label_settings = SubResource("LabelSettings_w5us0")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="MasteryScroll" type="ScrollContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/MasteryScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BountySelectScrollBox/VBoxContainer/MasteryScroll/VBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Select a Character to see their bounty"
+label_settings = SubResource("LabelSettings_w5us0")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="SelectedInfoMargin" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("4_wxadp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+custom_minimum_size = Vector2(193, 0)
+layout_mode = 2
+text = "Neferpitou"
+label_settings = SubResource("LabelSettings_b4id2")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+custom_minimum_size = Vector2(193, 0)
+layout_mode = 2
+text = "Categories"
+label_settings = SubResource("LabelSettings_qi7j8")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+columns = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer"]
+custom_minimum_size = Vector2(120, 45)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4id2")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Back to List"
+label_settings = SubResource("LabelSettings_ts2aj")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+columns = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(209, 266)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wxadp")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Select a Mission to see its details"
+label_settings = SubResource("LabelSettings_6aial")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mission"
+label_settings = SubResource("LabelSettings_amk0q")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 6
+
+[node name="Label3" type="Label" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer2" type="GridContainer" parent="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 6
+
+[node name="ButtonRow" type="VBoxContainer" parent="BountyPanel/MarginContainer"]
+custom_minimum_size = Vector2(206, 180)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="AcceptButton" type="PanelContainer" parent="BountyPanel/MarginContainer/ButtonRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qi7j8")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/ButtonRow/AcceptButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/ButtonRow/AcceptButton/MarginContainer"]
+layout_mode = 2
+text = "Accept Bounty"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="CancelButton" type="PanelContainer" parent="BountyPanel/MarginContainer/ButtonRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ts2aj")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/ButtonRow/CancelButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/ButtonRow/CancelButton/MarginContainer"]
+layout_mode = 2
+text = "Cancel Bounty"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="RerollButton" type="PanelContainer" parent="BountyPanel/MarginContainer/ButtonRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_amk0q")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/ButtonRow/RerollButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/ButtonRow/RerollButton/MarginContainer"]
+layout_mode = 2
+text = "Fully Reroll Bounty (1500 AP)"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="CompleteButton" type="PanelContainer" parent="BountyPanel/MarginContainer/ButtonRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6aial")
+
+[node name="MarginContainer" type="MarginContainer" parent="BountyPanel/MarginContainer/ButtonRow/CompleteButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="BountyPanel/MarginContainer/ButtonRow/CompleteButton/MarginContainer"]
+layout_mode = 2
+text = "Complete Bounty"
+label_settings = SubResource("LabelSettings_36ypu")
+horizontal_alignment = 1
+
+[node name="RewardLabel" type="Label" parent="BountyPanel/MarginContainer/ButtonRow"]
+layout_mode = 2
+text = "
+Complete any row, column, or diagonal to unlock the bounty target!"
+label_settings = SubResource("LabelSettings_w4uw3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("5_7e3uj")
+
+[connection signal="gui_input" from="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer/PanelContainer" to="." method="_back_clicked"]
+[connection signal="mouse_entered" from="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer/PanelContainer" to="." method="_back_hovered"]
+[connection signal="mouse_exited" from="BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/SelectedInfoMargin/VBoxContainer/PanelContainer" to="." method="_back_hover_stopped"]

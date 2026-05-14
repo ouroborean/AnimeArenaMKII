@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/character_name_button.tscn" id="1_jk3t3"]
+[ext_resource type="Script" path="res://ui/character_panel.gd" id="1_weqyc"]
+[ext_resource type="PackedScene" path="res://ui/hp_bar_component.tscn" id="2_gxiwk"]
+[ext_resource type="PackedScene" path="res://ui/main_action_container.tscn" id="2_tc7gs"]
+[ext_resource type="PackedScene" path="res://ui/acted_state_button.tscn" id="3_1r8x8"]
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/behind face picture border.png" id="3_okdq5"]
+[ext_resource type="PackedScene" path="res://ui/effect_tooltip_display.tscn" id="4_f11ve"]
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/FINAL_SKILL_PANEL.png" id="6_x77eq"]
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/white not your turn.png" id="9_0186o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7a3t"]
+resource_local_to_scene = true
+texture = ExtResource("3_okdq5")
+expand_margin_left = 15.0
+expand_margin_top = 10.0
+expand_margin_right = 9.0
+expand_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t21df"]
+resource_local_to_scene = true
+bg_color = Color(0.133333, 0.694118, 0.298039, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0yrq3"]
+resource_local_to_scene = true
+texture = ExtResource("6_x77eq")
+expand_margin_left = 18.0
+expand_margin_top = 15.0
+expand_margin_right = 5.0
+expand_margin_bottom = 13.0
+
+[node name="CharacterPanel" type="VBoxContainer"]
+offset_right = 482.0
+offset_bottom = 114.0
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 4.0
+script = ExtResource("1_weqyc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CharacterNameButton" parent="HBoxContainer/VBoxContainer2" instance=ExtResource("1_jk3t3")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g7a3t")
+
+[node name="PanelContainer" parent="HBoxContainer/VBoxContainer2/CharacterNameButton" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_t21df")
+
+[node name="TextureRect" parent="HBoxContainer/VBoxContainer2/CharacterNameButton/PanelContainer/MarginContainer/TextureButton" index="2"]
+mouse_filter = 2
+
+[node name="HPBarComponent" parent="HBoxContainer/VBoxContainer2" instance=ExtResource("2_gxiwk")]
+z_index = 7
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 0
+
+[node name="EffectTooltipDisplay" parent="HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("4_f11ve")]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+mouse_filter = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(365, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_0yrq3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 73
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_0186o")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.16
+theme_override_constants/separation = 10
+
+[node name="ActedStateButton" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_1r8x8")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MainActionContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_tc7gs")]
+layout_mode = 2
+
+[editable path="HBoxContainer/VBoxContainer2/CharacterNameButton"]
+[editable path="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/ActedStateButton"]

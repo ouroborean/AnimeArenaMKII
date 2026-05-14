@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="1_e52m8"]
+[ext_resource type="Script" path="res://ui/character_bucket_display.gd" id="1_ywstk"]
+[ext_resource type="PackedScene" path="res://ui/character_button.tscn" id="2_j3k8y"]
+[ext_resource type="Texture2D" path="res://assets/askange.png" id="4_p6785"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="5_hbovq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmruj"]
+resource_local_to_scene = true
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.835294)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.556863, 0, 0.0470588, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_25f01"]
+line_spacing = 0.0
+font = ExtResource("1_e52m8")
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y01md"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mena"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.611765, 0.0117647, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yriqj"]
+bg_color = Color(0, 0.682353, 0.72549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.611765, 0.0117647, 0, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_rosbv"]
+font = ExtResource("5_hbovq")
+font_size = 12
+
+[node name="Control" type="MarginContainer"]
+custom_minimum_size = Vector2(85, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_ywstk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmruj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Juushirou Ukitake"
+label_settings = SubResource("LabelSettings_25f01")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="CharacterProfileMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CharacterButton" parent="PanelContainer/VBoxContainer/CharacterProfileMargin" instance=ExtResource("2_j3k8y")]
+custom_minimum_size = Vector2(61, 61)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_y01md")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/CharacterProfileMargin"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_p6785")
+expand_mode = 1
+
+[node name="APBarMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/APBarMargin"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_e52m8")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/background = SubResource("StyleBoxFlat_1mena")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yriqj")
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/APBarMargin/ProgressBar"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 20.0
+text = "65050"
+label_settings = SubResource("LabelSettings_rosbv")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="PanelContainer" to="." method="panel_click"]
+[connection signal="mouse_entered" from="PanelContainer" to="." method="_on_panel_container_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer" to="." method="_on_panel_container_mouse_exited"]

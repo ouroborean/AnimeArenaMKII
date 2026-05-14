@@ -1,0 +1,188 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="1_7x47h"]
+[ext_resource type="Script" path="res://ui/clan_member_row.gd" id="1_345ij"]
+[ext_resource type="FontFile" path="res://assets/LATO-BLACK.TTF" id="2_wsei2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvsul"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_4lhkx"]
+font = ExtResource("1_7x47h")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ed4dc"]
+font = ExtResource("2_wsei2")
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lewj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_0a2qr"]
+outline_color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7o8m"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_hsvec"]
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_710k4"]
+bg_color = Color(0.376471, 0, 0.0235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1j2o"]
+bg_color = Color(0.360784, 0, 0.054902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Control" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bvsul")
+script = ExtResource("1_345ij")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(27, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cheshire"
+label_settings = SubResource("LabelSettings_4lhkx")
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "(W:45/L:5)"
+label_settings = SubResource("LabelSettings_ed4dc")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_2lewj")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "v"
+label_settings = SubResource("LabelSettings_0a2qr")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7o8m")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "^"
+label_settings = SubResource("LabelSettings_hsvec")
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_710k4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "Kick"
+label_settings = SubResource("LabelSettings_0a2qr")
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1j2o")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer4/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "Leave"
+label_settings = SubResource("LabelSettings_0a2qr")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="demote_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="demote_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer" to="." method="demote_hover_stop"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="promote_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="promote_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer2" to="." method="promote_hover_stop"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer3" to="." method="kick_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer3" to="." method="kick_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer3" to="." method="kick_hover_stop"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/PanelContainer4" to="." method="leave_click"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/PanelContainer4" to="." method="leave_hover"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/PanelContainer4" to="." method="leave_hover_stop"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/ingame/bottom right skill panel.png" id="1_3widr"]
+[ext_resource type="Script" path="res://ui/ability_description_panel.gd" id="1_jmcyv"]
+[ext_resource type="PackedScene" path="res://ui/action_button.tscn" id="2_8oh0c"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="4_hyar5"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-REGULAR.TTF" id="5_emwc0"]
+[ext_resource type="PackedScene" path="res://ui/ability_desc_label.tscn" id="5_supse"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cvy40"]
+texture = ExtResource("1_3widr")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxujq"]
+line_spacing = 0.0
+font = ExtResource("4_hyar5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uwls"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wh3fj"]
+font = ExtResource("5_emwc0")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_nevgf"]
+font = ExtResource("5_emwc0")
+font_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="AbilityDescriptionPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(493, 128)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 493.0
+offset_bottom = 64.0
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_cvy40")
+script = ExtResource("1_jmcyv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+
+[node name="AbilityNameLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Mystic Hydra
+"
+label_settings = SubResource("LabelSettings_qxujq")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="CostContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ActionButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("2_8oh0c")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1uwls")
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.03
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = 5
+
+[node name="AbilityDescLabel" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows/ScrollContainer/MarginContainer" instance=ExtResource("5_supse")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows/ScrollContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="AbilityClassLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows/HBoxContainer"]
+layout_mode = 2
+text = "Classes: Harmful, Affliction, Instant"
+label_settings = SubResource("LabelSettings_wh3fj")
+vertical_alignment = 1
+
+[node name="AbilityCooldownLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/Rows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 10
+text = "Cooldown: 2"
+label_settings = SubResource("LabelSettings_nevgf")
+horizontal_alignment = 2
+vertical_alignment = 1

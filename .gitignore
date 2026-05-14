@@ -1,0 +1,25 @@
+# Godot-specific ignores
+.godot/
+*.import
+export_preset.cfg
+import/
+*.uid
+*.txt
+*.py
+game/
+*.zip
+*.x86_64
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+*.exe
+*.pck
+*.md
+issue_images/
+replays/
+ausers/
+*.tmp
+html/
+stats/
+*.sh
+*.ps1

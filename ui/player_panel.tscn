@@ -1,0 +1,143 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbclsuvgm6c2n"]
+
+[ext_resource type="Script" uid="uid://ce1khs6nnm0n5" path="res://ui/player_panel.gd" id="1_2blms"]
+[ext_resource type="Texture2D" uid="uid://c7jvt5est7sh7" path="res://assets/avatars/angywendy.png" id="2_pp7xx"]
+[ext_resource type="FontFile" uid="uid://ouqo5tmxe33o" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_uigo1"]
+[ext_resource type="FontFile" uid="uid://4pjhvgcgixac" path="res://assets/ROBOTO-BOLD.TTF" id="4_pmiea"]
+[ext_resource type="FontFile" uid="uid://cftiikkpn6058" path="res://assets/ROBOTO-REGULAR.TTF" id="5_7utap"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlwyg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_53mqv"]
+font = ExtResource("3_uigo1")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_fw040"]
+line_spacing = 0.0
+font = ExtResource("5_7utap")
+font_size = 13
+font_color = Color(0.894118, 0.894118, 0.894118, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cq7a4"]
+line_spacing = 0.0
+font = ExtResource("5_7utap")
+font_size = 13
+font_color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tw2w3"]
+line_spacing = 0.0
+font = ExtResource("4_pmiea")
+font_size = 13
+font_color = Color(0.984314, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ht2s"]
+bg_color = Color(0.0313726, 0.678431, 0.729412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8og6a"]
+font = ExtResource("5_7utap")
+font_size = 12
+font_color = Color(0.894118, 0.894118, 0.894118, 1)
+
+[node name="PlayerPanel" type="PanelContainer" node_paths=PackedStringArray("name_label", "clan_label", "rank_label", "title_label", "label_container", "avatar_container", "win_label", "avatar_rect")]
+custom_minimum_size = Vector2(305, 75)
+offset_right = 305.0
+offset_bottom = 77.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_xlwyg")
+script = ExtResource("1_2blms")
+name_label = NodePath("HBoxContainer/LabelContainer/VBoxContainer/PlayerName")
+clan_label = NodePath("HBoxContainer/LabelContainer/VBoxContainer/PlayerClan")
+rank_label = NodePath("HBoxContainer/LabelContainer/VBoxContainer/PlayerRank")
+title_label = NodePath("HBoxContainer/LabelContainer/VBoxContainer/PlayerTitle")
+label_container = NodePath("HBoxContainer/LabelContainer")
+avatar_container = NodePath("HBoxContainer/VBoxContainer/MarginContainer")
+win_label = NodePath("HBoxContainer/VBoxContainer/MarginContainer2/Label")
+avatar_rect = NodePath("HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/TextureRect")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 2
+
+[node name="LabelContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="PlayerName" type="Label" parent="HBoxContainer/LabelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Ouroborean"
+label_settings = SubResource("LabelSettings_53mqv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerTitle" type="Label" parent="HBoxContainer/LabelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Title"
+label_settings = SubResource("LabelSettings_fw040")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerClan" type="Label" parent="HBoxContainer/LabelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "The Prism Council"
+label_settings = SubResource("LabelSettings_cq7a4")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerRank" type="Label" parent="HBoxContainer/LabelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+label_settings = SubResource("LabelSettings_tw2w3")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ht2s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_pp7xx")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 16
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "144 - 0"
+label_settings = SubResource("LabelSettings_8og6a")
+horizontal_alignment = 1
+vertical_alignment = 2

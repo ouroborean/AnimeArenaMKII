@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://ui/toga_disguise_panel.gd" id="1_nx6gr"]
+[ext_resource type="Texture2D" path="res://assets/ui/default_menu_frame.png" id="2_gobk1"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="3_akkwp"]
+[ext_resource type="PackedScene" path="res://ui/character_button.tscn" id="4_6hpjp"]
+[ext_resource type="Texture2D" path="res://assets/images/Himiko Toga/togaprof.png" id="5_sadcf"]
+[ext_resource type="Texture2D" path="res://assets/ui/char_select/close panel button.png" id="6_k4iig"]
+[ext_resource type="Texture2D" path="res://assets/ui/AP_Enter/confirm button.png" id="6_otdni"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wtwq"]
+texture = ExtResource("2_gobk1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0wb5"]
+font = ExtResource("3_akkwp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxn8s"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4r2pm"]
+font = ExtResource("3_akkwp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6addk"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 1)
+
+[node name="TogaDisguisePanel" type="HBoxContainer"]
+offset_right = 566.0
+offset_bottom = 409.0
+script = ExtResource("1_nx6gr")
+
+[node name="Control" type="PanelContainer" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(566, 409)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_6wtwq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 12
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Select a Disguise"
+label_settings = SubResource("LabelSettings_j0wb5")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.97
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer/MarginContainer2"]
+z_index = -1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxn8s")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current Disguise"
+label_settings = SubResource("LabelSettings_4r2pm")
+horizontal_alignment = 1
+
+[node name="CharacterButton" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_6hpjp")]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_6addk")
+
+[node name="TextureRect" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CharacterButton/MarginContainer" index="0"]
+texture = ExtResource("5_sadcf")
+
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_otdni")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = -17
+theme_override_constants/margin_top = 50
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+texture_normal = ExtResource("6_k4iig")
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="confirm_clicked"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+
+[editable path="Control/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CharacterButton"]

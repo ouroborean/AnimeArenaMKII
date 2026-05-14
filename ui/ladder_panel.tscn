@@ -1,0 +1,227 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/nexus_homepage/nexus very top border.png" id="1_s4o8y"]
+[ext_resource type="FontFile" path="res://assets/BASEMENTGROTESQUE-BLACK_V1.202.OTF" id="2_6buk2"]
+[ext_resource type="Script" path="res://ui/ladder_panel.gd" id="2_t5ae8"]
+[ext_resource type="FontFile" path="res://assets/ROBOTO-BOLD.TTF" id="4_bu3c1"]
+[ext_resource type="Texture2D" path="res://assets/ui/nexus_homepage/close panel button.png" id="4_evydo"]
+[ext_resource type="FontFile" path="res://assets/LATO-BLACK.TTF" id="4_ill47"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88pnf"]
+texture = ExtResource("1_s4o8y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58jng"]
+bg_color = Color(0.698039, 0.219608, 0.231373, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t57a"]
+line_spacing = -25.0
+font = ExtResource("2_6buk2")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_5v481"]
+font = ExtResource("4_bu3c1")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkoap"]
+font = ExtResource("4_ill47")
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -200.0
+offset_right = 319.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+script = ExtResource("2_t5ae8")
+
+[node name="Control" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_88pnf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer"]
+z_index = -1
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 19
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer2"]
+custom_minimum_size = Vector2(50, 31)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_58jng")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ladder Rankings
+"
+label_settings = SubResource("LabelSettings_4t57a")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Player Ladder"
+label_settings = SubResource("LabelSettings_5v481")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Rank"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.91
+theme_override_constants/margin_left = 22
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Username (Clan)"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 81
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "Rating (W-L)"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Clan Ladder"
+label_settings = SubResource("LabelSettings_5v481")
+horizontal_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Rank"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.91
+theme_override_constants/margin_left = 22
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Clan Name (Members)"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 81
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "Level (W-L)"
+label_settings = SubResource("LabelSettings_xkoap")
+
+[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 47
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("4_evydo")
+
+[connection signal="mouse_entered" from="MarginContainer4/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer4/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer4/TextureButton" to="." method="_on_texture_button_pressed"]

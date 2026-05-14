@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" uid="uid://c6y3qw64gx2vx" path="res://ui/character_cosmetic_set_old.gd" id="1_aprbi"]
+[ext_resource type="FontFile" uid="uid://4pjhvgcgixac" path="res://assets/ROBOTO-BOLD.TTF" id="2_mlm7r"]
+[ext_resource type="Texture2D" uid="uid://d26t58lajb1pj" path="res://assets/cosmetics/character_frames/portrait_color_default.png" id="3_nge2n"]
+[ext_resource type="Texture2D" uid="uid://yr36d0pv8w27" path="res://assets/cosmetics/character_baubles/hat_mastery_meliodas.png" id="4_4wp0j"]
+[ext_resource type="Texture2D" uid="uid://bcm73mb632ox" path="res://assets/cosmetics/game_panels/gamepanel_color_default.png" id="5_tgc20"]
+
+
+[node name="CharacterCosmeticSet" type="MarginContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_aprbi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mlm7r")
+theme_override_font_sizes/font_size = 12
+selected = 0
+item_count = 1
+popup/item_0/text = "Portrait Frame"
+popup/item_0/id = 0
+
+[node name="OptionButton2" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mlm7r")
+theme_override_font_sizes/font_size = 12
+selected = 0
+item_count = 1
+popup/item_0/text = "Hat"
+popup/item_0/id = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nge2n")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = -44.0
+offset_top = -29.0
+offset_right = 137.0
+offset_bottom = 152.0
+mouse_filter = 2
+texture = ExtResource("4_4wp0j")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.39
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_mlm7r")
+theme_override_font_sizes/font_size = 12
+selected = 0
+item_count = 1
+popup/item_0/text = "Skill Panel"
+popup/item_0/id = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_tgc20")
+stretch_mode = 3
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -13.0
+
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/OptionButton" to="." method="character_frame_option_selected"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_mouse_entered"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/OptionButton2" to="." method="hat_selected"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/OptionButton2" to="." method="_on_option_button_2_mouse_entered"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer2/OptionButton" to="." method="action_frame_option_selected"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer2/OptionButton" to="." method="_on_option_button_mouse_entered"]
