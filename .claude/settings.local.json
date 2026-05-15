@@ -54,7 +54,8 @@
       "Bash(awk '{ print; fflush\\(\\) }')",
       "Bash(./run_bot_training.sh --anchor=luffy --anchor-sets=2 --matches-per-set=3 --vs-priority --eval)",
       "Bash(./run_bot_training.sh --matches=5 --vs-priority --eval)",
-      "Bash(./run_bot_training.sh --matches=3 --vs-priority --eval --verbose)"
+      "Bash(./run_bot_training.sh --matches=3 --vs-priority --eval --verbose)",
+      "Bash(git -C \"c:/Users/Chris/Desktop/portfolio/git/anime-arena-tutorials/AnimeArenaMKII\" status --short)"
     ]
   }
 }

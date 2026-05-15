@@ -48,10 +48,15 @@ var current_bounty_type = "unlock"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
 	rap_sheet = $BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2
 	bounty_grid = $BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/GridContainer
 	selected_mission = $BountyPanel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2
+	# Help-system tagging: the whole bounty panel should map to a single help
+	# series regardless of internal state (no selection vs unlock selected vs
+	# mastery selected). Marking BountyPanel as help_opaque stops the walker
+	# from descending into it, so the fingerprint sees only "bounty_panel".
+	$BountyPanel.set_meta("help_opaque", true)
 	$MarginContainer/TextureButton.mouse_entered.connect(func ():
 		$MarginContainer/TextureButton.modulate = Color(1.0, 1.0, 1.0, 0.502)
 	)
