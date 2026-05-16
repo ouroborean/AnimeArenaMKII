@@ -1,11 +1,11 @@
 extends Ability
-var base_power = 10
+var base_power = 20
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Hashirama heals his team for 10 HP and deals 10 Affliction damage to the enemy team. This skill is delayed by 1 turn. While enhanced, this skill will heal Hashirama's team for 5 HP and deal 5 Affliction damage to the enemy team each turn that it remains delayed."
+	return "Hashirama heals his team for 20 HP and deals 20 Affliction damage to the enemy team. This skill is delayed by 1 turn. While enhanced, this skill will heal Hashirama's team for 5 HP and deal 5 Affliction damage to the enemy team each turn that it remains delayed."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)

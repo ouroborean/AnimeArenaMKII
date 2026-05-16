@@ -5,24 +5,24 @@ extends Ability
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "For 2 turns, one enemy will be Shattered and if they use a new harmful skill, they take 5 piercing damage. While this is active, Spirit Dive: Sylph has its cost reduced by 1 blue energy."
+	return "For 3 turns, one enemy will be Shattered and if they use a new harmful skill, they take 10 piercing damage. While this is active, Spirit Dive: Sylph has its cost reduced by 1 blue energy."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		var shatter = Effect.def_negate(3)
+		var shatter = Effect.def_negate(5)
 		shatter.set_source(self)
-		var trigger_eff = Effect.trigger_effect(Trigger.always(tornado_trigger), EffectType.Type.HARMFUL_USE_TRIGGER, 4, "If this character uses a new harmful skill, they will take 5 piercing damage.")
+		var trigger_eff = Effect.trigger_effect(Trigger.always(tornado_trigger), EffectType.Type.HARMFUL_USE_TRIGGER, 6, "If this character uses a new harmful skill, they will take 10 piercing damage.")
 		trigger_eff.set_source(self)
 		Character.add_hostile_effect(context, user, target, trigger_eff)
 		Character.add_hostile_effect(context, user, target, shatter)
-	var cost_mod = Effect.cost_mod_effect(-1, 3, Energy.Type.BLUE, ["Spirit Dive: Sylph"])
+	var cost_mod = Effect.cost_mod_effect(-1, 5, Energy.Type.BLUE, ["Spirit Dive: Sylph"])
 	cost_mod.set_source(self)
 	Character.add_allied_effect(context, user, user, cost_mod)
 		
 
 func tornado_trigger(context):
-	Character.resolve_effect_damage(context, context['effect'], context['target'], 5, DamageType.Type.PIERCING)
+	Character.resolve_effect_damage(context, context['effect'], context['target'], 10, DamageType.Type.PIERCING)
 
 func extra_usable(user):
 	#Extra state requirements (Like something being marked) go here.

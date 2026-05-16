@@ -5,21 +5,21 @@ extends Ability
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "For the next 4 turns, Omnimon will ignore Harmful, non-damaging effects and if his Nemesis is alive, he can only target them. During this time, his Nemesis is Isolated."
+	return "For the next 3 turns, Omnimon will ignore Harmful, non-damaging effects and if his Nemesis is alive, he can only target them. During this time, his Nemesis is Isolated."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
-	var ignore = Effect.ignore_non_damage_effect(8)
+	var ignore = Effect.ignore_non_damage_effect(6)
 	ignore.set_source(self)
 	Character.add_allied_effect(context, user, user, ignore)
 	
 	for enemy in context['enemy_team'].characters:
 		if enemy.marked_by("Digidestiny", user) and not enemy.dead and not enemy.banished:
-			var mark = Effect.mark(7, "Omnimon can only target his Nemesis.")
+			var mark = Effect.mark(5, "Omnimon can only target his Nemesis.")
 			mark.set_source(self)
 			Character.add_allied_effect(context, user, user, mark)
 			
-			var isolation = Effect.isolate(8)
+			var isolation = Effect.isolate(6)
 			isolation.set_source(self)
 			Character.add_hostile_effect(context, user, enemy, isolation, true)
 		

@@ -9,14 +9,14 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 20 Affliction damage to one enemy and removes 1 Random energy from them",
+		"Deals 20 Piercing damage to one enemy and removes 1 Random energy from them",
 		"Cannot target the same enemy for 2 turns"
 	]
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		Character.resolve_damage(context, target, base_damage, DamageType.Type.AFFLICTION)
+		Character.resolve_damage(context, target, base_damage, DamageType.Type.PIERCING)
 		target.lose_energy(user, 1)
 		var mark = Effect.mark(5, func (eff): return "This character can't be targeted by Destruction Alchemy Strike.")
 		mark.set_source(self)

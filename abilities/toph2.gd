@@ -9,7 +9,7 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Stuns target enemy's Physical skills for 2 turns",
+		"Stuns target enemy's Physical skills for 2 turns and deals 10 damage per turn while active",
 		["If Toph uses Stone Pillar on that enemy, they will lose 1 random energy", Color.CADET_BLUE]
 	]
 
@@ -25,6 +25,9 @@ func execute(user, battle):
 		var mark = Effect.mark(3, "Stone Pillar will remove 1 random energy from this character.")
 		mark.set_source(self)
 		Character.add_hostile_effect(context, user, target, mark)
+		var dot = Effect.damage_effect(10, DamageType.Type.NORMAL, 3)
+		dot.set_source(self)
+		Character.add_hostile_effect(context, user, target, dot)
 	var mark = Effect.mark(3, "Toph is using Earthen Shackles. If she is stunned, it will be paused.")
 	mark.set_source(self)
 	Character.add_hostile_effect(context, user, user, mark)

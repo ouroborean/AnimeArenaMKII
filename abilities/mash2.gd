@@ -1,11 +1,11 @@
 extends Ability
-var base_damage = 15
+var base_damage = 25
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Mash deals 15 damage to all enemies and taunts her primary target for 1 turn."
+	return "Mash deals 25 damage to all enemies and taunts her primary target for 1 turn."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)

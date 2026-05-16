@@ -10,7 +10,8 @@ func describe(user):
 func split_desc():
 	return [
 		"Target enemy is stunned until the end of Shokuhou's next turn",
-		["During this time, that enemy's skills replace Shokuhou's skills", Color.AQUA]
+		["During this time, that enemy's skills replace Shokuhou's skills", Color.AQUA],
+		["While active, those skills cost 1 less Random energy", Color.AQUA]
 	]
 
 func execute(user, battle):
@@ -30,8 +31,11 @@ func execute(user, battle):
 			copy.system = true
 			copy.set_source(self)
 			Character.add_allied_effect(context, user, user, copy)
-	
-	
+
+	var cost_discount = Effect.cost_mod_effect(-1, duration, Energy.Type.RANDOM)
+	cost_discount.set_source(self)
+	Character.add_allied_effect(context, user, user, cost_discount)
+
 	user.effects.full_remove_effect_by_name("Exterior")
 
 func extra_usable(user):

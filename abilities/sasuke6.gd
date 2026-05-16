@@ -9,7 +9,7 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 50 damage to target enemy",
+		"Deals 40 damage to target enemy",
 		["If that enemy's HP falls to 10 or lower, they will be executed", Color.ORANGE_RED],
 		["Cannot be countered and can only be used once", Color.DIM_GRAY]
 	]
@@ -17,7 +17,7 @@ func split_desc():
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		Character.resolve_damage(context, target, 50, DamageType.Type.NORMAL)
+		Character.resolve_damage(context, target, 40, DamageType.Type.NORMAL)
 		target.execute_attempt(10, user, self)
 	var used_mark = Effect.mark(-1, "Kirin has been used.")
 	used_mark.set_source(self)
@@ -29,8 +29,8 @@ func extra_usable(user):
 
 func custom_behavior(context):
 	var variations = []
-	variations += behavior_hostile_single_require_mark(context, "Great Dragon Fire", EffectType.Type.MARK, 100)
+	variations += behavior_single_target_damage(context, 100)
 	return variations
 
 func target(user, battle):
-	default_hostile_target_function(user, battle, false, "Great Dragon Fire")
+	default_hostile_target_function(user, battle)

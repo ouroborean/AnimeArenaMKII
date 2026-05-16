@@ -1,26 +1,27 @@
 extends Ability
 
-var base_damage = 15
+var initial_damage = 30
+var tick_damage = 15
 
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "One enemy permanently takes 15 piercing damage per turn. During this time, their skills cost one more random energy, Reap is replaced by Figure-6 Hunter, and if the targeted enemy uses a new harmful skill, this effect will end. Channeled."
+	return "One enemy takes 30 piercing damage and then takes 15 piercing damage per turn. During this time, their skills cost one more random energy, Reap is replaced by Figure-6 Hunter, and if the targeted enemy uses a new harmful skill, this effect will end. Channeled."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
-	
+
 	var cancels = []
-	
+
 	for target in user.targeter.targets:
-		Character.resolve_damage(context, target, base_damage, DamageType.Type.PIERCING)
+		Character.resolve_damage(context, target, initial_damage, DamageType.Type.PIERCING)
 		var cost_mod = Effect.cost_mod_effect(1, -1, Energy.Type.RANDOM)
 		cost_mod.set_source(self)
 		cost_mod.channel = true
 		cancels.append(cost_mod)
-		var damage_eff = Effect.damage_effect(base_damage, DamageType.Type.PIERCING, -1)
+		var damage_eff = Effect.damage_effect(tick_damage, DamageType.Type.PIERCING, -1)
 		damage_eff.set_source(self)
 		damage_eff.channel = true
 		cancels.append(damage_eff)

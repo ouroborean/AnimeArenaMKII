@@ -1,11 +1,11 @@
 extends Ability
-var base_damage = 10
+var base_damage = 20
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Target enemy takes 10 damage and is stunned for 1 turn. This skill is always delayed by 1 turn. While enhanced, this skill will stun a random targetable enemy's Physical and Energy skills each turn that it remains delayed."
+	return "Target enemy takes 20 damage and is stunned for 1 turn. This skill is always delayed by 1 turn. While enhanced, this skill will stun a random targetable enemy's Physical and Energy skills each turn that it remains delayed."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)

@@ -1,11 +1,11 @@
 extends Ability
-var base_damage = 15
+var base_damage = 20
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Kuroko deals 15 damage to one enemy and becomes invulnerable for one turn. If used on the turn after Needle Pin, this ability will have no cooldown. If used on the turn after Judgement Throw, this ability will deal 15 extra damage."
+	return "Kuroko deals 20 damage to one enemy and becomes invulnerable for one turn. If used on the turn after Needle Pin, this ability will have no cooldown. If used on the turn after Judgement Throw, this ability will deal 15 extra damage."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)

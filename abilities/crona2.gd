@@ -9,9 +9,9 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 10 Affliction damage to all enemies for 2 turns",
-		["All characters have their skill costs increased by 1 Random energy", Color.CADET_BLUE],
-		["Swaps with Scream Chaser", Color.AQUA]
+		"Deals 10 Affliction damage to all enemies for a number of turns equal to the energy spent",
+		["All characters have their skill costs increased by 1 Random energy for the same duration", Color.CADET_BLUE],
+		["Swaps with Scream Chaser for the same duration", Color.AQUA]
 	]
 
 func execute(user, battle):
@@ -20,16 +20,17 @@ func execute(user, battle):
 	var captured_cost = cost()
 	for cost_type in captured_cost:
 		total_cost += captured_cost[cost_type]
+	var scaled_duration = 1 + total_cost * 2
 	for target in user.targeter.targets:
 		if not target in user.team.characters:
 			Character.resolve_damage(context, target, 10, DamageType.Type.AFFLICTION)
-			var damage_ef = Effect.damage_effect(10, DamageType.Type.AFFLICTION, 3)
+			var damage_ef = Effect.damage_effect(10, DamageType.Type.AFFLICTION, scaled_duration)
 			damage_ef.set_source(self)
 			Character.add_hostile_effect(context, user, target, damage_ef)
-		var energy_mod = Effect.cost_mod_effect(1, 5, Energy.Type.RANDOM)
+		var energy_mod = Effect.cost_mod_effect(1, scaled_duration, Energy.Type.RANDOM)
 		energy_mod.set_source(self)
 		Character.add_allied_effect(context, user, target, energy_mod)
-	var swap = Effect.ability_swap_effect(4, 1, user, 5)
+	var swap = Effect.ability_swap_effect(4, 1, user, scaled_duration)
 	swap.set_source(self)
 	Character.add_allied_effect(context, user, user, swap)
 	user.manually_advance_mission(6, total_cost)

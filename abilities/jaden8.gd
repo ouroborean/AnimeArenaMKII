@@ -52,7 +52,7 @@ func extra_usable(user):
 		"Elemental HERO Bubbleman", EffectType.Type.SHIELD, user
 	)
 	var has_self = user.has_effect(
-		ability_name, EffectType.Type.SHIELD, user
+		ability_name, EffectType.Type.TICKING_TRIGGER, user
 	)
 	return not has_self and has_avian and has_bubbleman
 

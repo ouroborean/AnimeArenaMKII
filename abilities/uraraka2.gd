@@ -12,13 +12,18 @@ func describe(user):
 func split_desc():
 	return [
 		"Deals 20 damage to target enemy and increases the cost of their skills by 1 Random energy (stacks)",
+		["Deals 5 more damage per stack of Zero Gravity on the target", Color.CADET_BLUE],
 		["This effect persists until they use a new skill", Color.DIM_GRAY]
 	]
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		Character.resolve_damage(context, target, base_damage, DamageType.Type.NORMAL)
+		var zg_stacks = 0
+		var zg = target.has_effect("Zero Gravity", EffectType.Type.DAMAGE_MOD, user)
+		if zg:
+			zg_stacks = zg.stacks
+		Character.resolve_damage(context, target, base_damage + 5 * zg_stacks, DamageType.Type.NORMAL)
 		
 		var cost_mod_eff = Effect.cost_mod_effect(1, -1, Energy.Type.RANDOM)
 		cost_mod_eff.set_source(self)

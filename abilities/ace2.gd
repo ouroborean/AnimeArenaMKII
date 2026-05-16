@@ -11,7 +11,8 @@ func split_desc():
 	return [
 		"Marks all enemies with 1 stack of Firefly",
 		["Marked enemies take 10 damage per stack if Ace deals new damage to them", Color.ORANGE],
-		"This consumes all stacks of Firefly on the target"
+		"This consumes all stacks of Firefly on the target",
+		"Ace gains 10 Damage Reduction for 1 turn"
 	]
 
 func execute(user, battle):
@@ -23,6 +24,9 @@ func execute(user, battle):
 		trigger.display_stacks = true
 		trigger.ability_only = true
 		Character.add_hostile_effect(context, user, target, trigger)
+	var dr = Effect.damage_reduction_effect(10, 2)
+	dr.set_source(self)
+	Character.add_allied_effect(context, user, user, dr)
 
 func firefly_damage_trigger(context):
 	var ace = context['owner']

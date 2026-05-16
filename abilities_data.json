@@ -6030,10 +6030,10 @@
 	"accurate": false,
 	"cost": {
 	  "0": 0,
-	  "1": 0,
+	  "1": 1,
 	  "2": 0,
 	  "3": 0,
-	  "4": 2
+	  "4": 1
 	},
 	"cooldown": 1,
 	"name": "Around Round Crash",
@@ -7817,7 +7817,7 @@
 	  "1": 0,
 	  "2": 0,
 	  "3": 0,
-	  "4": 2
+	  "4": 1
 	},
 	"cooldown": 6,
 	"name": "Destiny Digivolve",
@@ -8844,7 +8844,7 @@
 	  "1": 0,
 	  "2": 0,
 	  "3": 1,
-	  "4": 1
+	  "4": 0
 	},
 	"cooldown": 3,
 	"name": "Life Fiber Synchronization",
@@ -10323,7 +10323,7 @@
 	  "3": 0,
 	  "4": 1
 	},
-	"cooldown": 3,
+	"cooldown": 2,
 	"name": "Scythe Transformation",
 	"classes": [
 	  "Helpful",
@@ -12533,7 +12533,7 @@
 	"accurate": false,
 	"cost": {
 	  "0": 0,
-	  "1": 3,
+	  "1": 2,
 	  "2": 0,
 	  "3": 0,
 	  "4": 1
@@ -13801,7 +13801,7 @@
 	  "0": 0,
 	  "1": 0,
 	  "2": 0,
-	  "3": 2,
+	  "3": 1,
 	  "4": 1
 	},
 	"cooldown": 0,
@@ -15064,9 +15064,9 @@
 	"cost": {
 	  "0": 0,
 	  "1": 0,
-	  "2": 1,
+	  "2": 0,
 	  "3": 0,
-	  "4": 0
+	  "4": 1
 	},
 	"cooldown": 3,
 	"name": "Seventh Fang: Spatial Awareness",
@@ -17643,10 +17643,10 @@
 	"accurate": false,
 	"cost": {
 	  "0": 0,
-	  "1": 1,
+	  "1": 0,
 	  "2": 0,
 	  "3": 0,
-	  "4": 0
+	  "4": 1
 	},
 	"cooldown": 0,
 	"name": "Blue-Eyes White Dragon",
@@ -21468,7 +21468,7 @@
 	  "0": 0,
 	  "1": 0,
 	  "2": 0,
-	  "3": 3,
+	  "3": 2,
 	  "4": 0
 	},
 	"cooldown": 2,

@@ -1,5 +1,5 @@
 extends Ability
-var base_damage = 10
+var base_damage = 15
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
@@ -8,7 +8,7 @@ func describe(user):
 	return "Deals 10 damage and 0 Affliction damage to target enemy."
 
 func split_desc():
-	return ["Deals 10 damage and 0 Affliction damage to target enemy", "Affliction damage dealt is increased by Ace's total Damage Reduction"]
+	return ["Deals 15 damage and 0 Affliction damage to target enemy", "Affliction damage dealt is increased by Ace's total Damage Reduction"]
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
