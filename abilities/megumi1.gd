@@ -9,7 +9,7 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 15 damage to target enemy and Stuns their non-Physical skills for 1 turn",
+		"Deals 20 damage to target enemy and Stuns their non-Physical skills for 1 turn",
 		["Affected enemy is marked for 3 turns", Color.CADET_BLUE]
 	]
 
@@ -25,7 +25,7 @@ func execute(user, battle):
 	
 	for target in user.targeter.targets:
 		#Put execution per target here
-		Character.resolve_damage(context, target, 15, DamageType.Type.NORMAL)
+		Character.resolve_damage(context, target, 20, DamageType.Type.NORMAL)
 		var stun = Effect.stun_effect(2, [], [target_class])
 		stun.set_source(self)
 		Character.add_hostile_effect(context, user, target, stun)

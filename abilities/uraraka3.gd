@@ -11,12 +11,30 @@ func describe(user):
 
 func split_desc():
 	return [
-		"All enemies receive a stack of Zero Gravity"
+		"All enemies receive a stack of Zero Gravity",
+		["Enemies already affected by Zero Gravity also have Gravity Plus applied to them", Color.CADET_BLUE]
 	]
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
+	var gravity_plus_ability = user.moveset.base_abilities[1]
 	for target in user.targeter.targets:
+		if target.has_effect("Zero Gravity", EffectType.Type.DAMAGE_MOD, user):
+			var gp_cost_mod = Effect.cost_mod_effect(1, -1, Energy.Type.RANDOM)
+			gp_cost_mod.set_source(gravity_plus_ability)
+			gp_cost_mod.stackable = true
+			gp_cost_mod.per_stack = true
+			var gp_trigger = Trigger.from_condition(Condition.always(), gravity_plus_ability.gravity_trigger)
+			var gp_trigger_desc = func(eff):
+				return "If this character uses a new skill, this effect will end."
+			var gp_trigger_eff = Effect.trigger_effect(gp_trigger, EffectType.Type.ACTION_USE_TRIGGER, -1, gp_trigger_desc)
+			gp_trigger_eff.set_source(gravity_plus_ability)
+			gp_trigger_eff.refresh = true
+			gp_trigger_eff.stackable = true
+			gp_trigger_eff.display_stacks = true
+			Character.add_hostile_effect(context, user, target, gp_cost_mod)
+			Character.add_hostile_effect(context, user, target, gp_trigger_eff)
+
 		var damage_mod_eff = Effect.damage_mod_effect(base_damage_reduction, -1)
 		damage_mod_eff.set_source(user.moveset.base_abilities[0])
 		damage_mod_eff.invisible = true
@@ -30,7 +48,7 @@ func execute(user, battle):
 		trigger_eff.stackable = true
 		trigger_eff.set_source(user.moveset.base_abilities[0])
 		trigger_eff.invisible = true
-		
+
 		Character.add_hostile_effect(context, user, target, damage_mod_eff)
 		Character.add_hostile_effect(context, user, target, trigger_eff)
 

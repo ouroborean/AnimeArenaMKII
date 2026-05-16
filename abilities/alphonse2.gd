@@ -1,5 +1,5 @@
 extends Ability
-var base_damage = 15
+var base_damage = 20
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
@@ -9,14 +9,14 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Target ally deals 15 Piercing damage to their primary target the next time they deal new damage",
+		"Target ally deals 20 Piercing damage to their primary target the next time they deal new damage",
 		"Cannot target a currently affected ally"
 	]
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		var trigger = Effect.trigger_effect(Trigger.always(weapon_trigger), EffectType.Type.DAMAGE_DEALT_TRIGGER, -1, func (eff): return "The next time this character deals new damage, Alphonse will deal 15 piercing damage to their target.")
+		var trigger = Effect.trigger_effect(Trigger.always(weapon_trigger), EffectType.Type.DAMAGE_DEALT_TRIGGER, -1, func (eff): return "The next time this character deals new damage, Alphonse will deal 20 piercing damage to their target.")
 		trigger.set_source(self)
 		trigger.remove_on_death = false
 		Character.add_allied_effect(context, user, target, trigger)

@@ -1,11 +1,11 @@
 extends Ability
-var base_power = 5
+var base_power = 10
 #Check the export variables in the Inspector for the ability image, cooldown, cost dictionary, setting ability classes,
 #setting the ability's name, and choosing the targeting type.
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Targets a character marked by Ofuda. If they are an enemy, they receive 5 damage, increased by 5 per character marked by Ofuda. If they are an ally, they are healed for 5 HP, increased by 5 per character marked by Ofuda."
+	return "Targets a character marked by Ofuda. If they are an enemy, they receive 10 damage, increased by 5 per character marked by Ofuda. If they are an ally, they are healed for 10 HP, increased by 5 per character marked by Ofuda."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)

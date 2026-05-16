@@ -5,13 +5,13 @@ extends Ability
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Satsuki receives 5 more healing from all sources. Additionally, Satsuki heals herself for 0 HP each turn."
+	return "Satsuki receives 5 more healing from all sources. Additionally, Satsuki heals herself for 5 HP each turn."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	var healing_mod = Effect.healing_received_mod_effect(5, -1)
 	healing_mod.set_source(self)
-	var healing_eff = Effect.healing_effect(0, -1)
+	var healing_eff = Effect.healing_effect(5, -1)
 	healing_eff.set_source(self)
 	Character.add_allied_effect(context, user, user, healing_mod)
 	Character.add_allied_effect(context, user, user, healing_eff)

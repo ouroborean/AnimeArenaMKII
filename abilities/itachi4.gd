@@ -8,7 +8,7 @@ func describe(user):
 func split_desc():
 	return [
 		"Sets up Susanoo (Invisible)",
-		["When Itachi's HP drops below 50: gains 50 Shield, permanently ignores non-damage effects, takes 10 Affliction damage per turn", Color.CADET_BLUE],
+		["When Itachi's HP drops below 50: gains 35 Shield, permanently ignores non-damage effects, and is immune to damage while active", Color.CADET_BLUE],
 		["On activation, Crow Clone / Tsukuyomi / Kotoamatsukami are permanently replaced by Totsuka Blade / Yata Mirror / Yasaka Magatama", Color.AQUAMARINE],
 	]
 
@@ -43,9 +43,9 @@ func susanoo_activate(context):
 	var itachi = context['owner']
 	var qc = QueryContext.from_game_state(itachi, itachi.battle)
 
-	apply_allied(qc, itachi, Effect.shield_effect(50, -1))
+	apply_allied(qc, itachi, Effect.shield_effect(35, -1))
 	apply_allied(qc, itachi, Effect.ignore_non_damage_effect(-1))
-	apply_allied(qc, itachi, Effect.damage_effect(10, DamageType.Type.AFFLICTION, -1))
+	apply_allied(qc, itachi, Effect.ignore_damage_effect(-1))
 
 	swap_ability(qc, 4, 0, -1)
 	swap_ability(qc, 5, 1, -1)

@@ -8,9 +8,10 @@ func describe(user):
 func split_desc():
 	return [
 		"For 1 turn, marks target enemy (Invisible)",
+		["Itachi gains 10 invisible Shield", Color.CADET_BLUE],
 		["If they use a new skill, Itachi's skills cost 1 less Random energy next turn", Color.CADET_BLUE],
 		["If that skill targeted Itachi, also costs 1 less White energy next turn", Color.CADET_BLUE],
-		["On trigger, the marked enemy takes 10 Piercing damage", Color.CADET_BLUE],
+		["On trigger, the marked enemy takes 10 Piercing damage (twice if the skill targeted Itachi)", Color.CADET_BLUE],
 	]
 
 
@@ -21,9 +22,12 @@ func execute(user, battle):
 			Trigger.always(crow_trigger),
 			EffectType.Type.ACTION_USE_TRIGGER,
 			2,
-			"If this character uses a new skill, Itachi gains a cost discount and they take 10 Piercing damage.")
+			"If this character uses a new skill, Itachi gains a cost discount and they take 10 Piercing damage. If that skill targets Itachi, they take the damage twice.")
 		trigger.invisible = true
 		apply_hostile(context, target, trigger)
+	var shield = Effect.shield_effect(10, -1)
+	shield.invisible = true
+	apply_allied(context, user, shield)
 
 
 func crow_trigger(context):
@@ -45,6 +49,8 @@ func crow_trigger(context):
 	var stored = itachi.used_ability
 	itachi.used_ability = self
 	Character.resolve_damage(qc, enemy, 10, DamageType.Type.PIERCING)
+	if itachi in enemy.targeter.targets:
+		Character.resolve_damage(qc, enemy, 10, DamageType.Type.PIERCING)
 	itachi.used_ability = stored
 
 	# Breadcrumb so Tsukuyomi can read "damaged by Crow Clone last turn".

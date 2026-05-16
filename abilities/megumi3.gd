@@ -9,8 +9,8 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 20 damage to target enemy",
-		["If target marked by Bottomless Well, deals 25 Piercing damage instead", Color.CADET_BLUE],
+		"Deals 25 damage to target enemy",
+		["If target marked by Bottomless Well, deals 30 Piercing damage instead", Color.CADET_BLUE],
 		["If target marked by Great Serpent, they deal -5 damage for 1 turn", Color.CADET_BLUE]
 	]
 
@@ -18,10 +18,10 @@ func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	
 	for target in user.targeter.targets:
-		var base_damage = 20
+		var base_damage = 25
 		var damage_type = DamageType.Type.NORMAL
 		if target.marked_by("Bottomless Well"):
-			base_damage = 25
+			base_damage = 30
 			damage_type = DamageType.Type.PIERCING
 		Character.resolve_damage(context, target, base_damage, damage_type)
 		if target.marked_by("Great Serpent"):

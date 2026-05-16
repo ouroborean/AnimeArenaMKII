@@ -5,15 +5,15 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Permanently gives Alphamon 40 Shield. While active, deals 10 damage to all enemies each turn.",
-		"Permanently gives all enemies 20 Nullify. While the Nullify remains on an enemy, Alphamon deals 20 damage to them each turn.",
+		"Permanently gives Alphamon 30 Shield. While active, deals 10 damage to all enemies each turn.",
+		"Permanently gives all enemies 15 Nullify. While the Nullify remains on an enemy, Alphamon deals 20 damage to them each turn.",
 	]
 
 func execute(user, battle):
 	var context = make_context(battle)
 
 	if user.has_effect("Digitalize of Soul", EffectType.Type.SHIELD, user) == null:
-		var shield = Effect.shield_effect(40, -1)
+		var shield = Effect.shield_effect(30, -1)
 		shield.set_source(self)
 		shield.wrapup_func = shield_ending
 		Character.add_allied_effect(context, user, user, shield)
@@ -39,7 +39,7 @@ func execute(user, battle):
 			continue
 
 		if target.has_effect("Digitalize of Soul", EffectType.Type.BARRIER, user) == null:
-			var nullify = Effect.barrier_effect(20, -1)
+			var nullify = Effect.barrier_effect(15, -1)
 			nullify.set_source(self)
 			nullify.remove_on_death = true
 			nullify.wrapup_func = nullify_ending

@@ -5,12 +5,12 @@ extends Ability
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Deals 15 damage to target enemy and permanently increases the damage they take from this skill by 5 (stacks)."
+	return "Deals 20 damage to target enemy and permanently increases the damage they take from this skill by 5 (stacks)."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
 	for target in user.targeter.targets:
-		var base_damage = 15
+		var base_damage = 20
 		if target.marked_by("Hammer Swing"):
 			var swings = target.has_effect("Hammer Swing", EffectType.Type.MARK).stacks
 			base_damage += (5 * swings)

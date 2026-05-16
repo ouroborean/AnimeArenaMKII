@@ -5,22 +5,19 @@ extends Ability
 
 func describe(user):
 	#This is part of what is used to generate the information panel for an ability, so make sure it's accurate
-	return "Passive: Whenever any other character ends their turn without using a new skill, they will gain 10 Shield for 1 turn. Whenever any other character is stunned, they will heal 10 HP."
+	return "Passive: Whenever any of Koro-Sensei's allies ends their turn without using a new skill, they will gain 10 Shield for 1 turn. Whenever any of his allies is stunned, they will heal 10 HP."
 
 func execute(user, battle):
 	var context = QueryContext.from_game_state(user, battle)
-	for target in battle.all_characters():
-		if not target == user:
-			var stun_trigger = Effect.trigger_effect(Trigger.always(class_stun_trigger), EffectType.Type.STUN_RECEIVED_TRIGGER, -1, "If this character is stunned, they will heal 10 HP.")
-			stun_trigger.set_source(self)
-			var end_trigger = Effect.trigger_effect(Trigger.always(end_of_turn_trigger), EffectType.Type.END_OF_TURN_TRIGGER, -1, "If this character ends their turn without using a new skill, they will gain 10 Shield for 1 turn.")
-			end_trigger.set_source(self)
-			if target in user.team.characters:
-				Character.add_allied_effect(context, user, target, stun_trigger)
-				Character.add_allied_effect(context, user, target, end_trigger)
-			else:
-				Character.add_hostile_effect(context, user, target, stun_trigger)
-				Character.add_hostile_effect(context, user, target, end_trigger)
+	for target in user.team.characters:
+		if target == user:
+			continue
+		var stun_trigger = Effect.trigger_effect(Trigger.always(class_stun_trigger), EffectType.Type.STUN_RECEIVED_TRIGGER, -1, "If this character is stunned, they will heal 10 HP.")
+		stun_trigger.set_source(self)
+		var end_trigger = Effect.trigger_effect(Trigger.always(end_of_turn_trigger), EffectType.Type.END_OF_TURN_TRIGGER, -1, "If this character ends their turn without using a new skill, they will gain 10 Shield for 1 turn.")
+		end_trigger.set_source(self)
+		Character.add_allied_effect(context, user, target, stun_trigger)
+		Character.add_allied_effect(context, user, target, end_trigger)
 		
 
 

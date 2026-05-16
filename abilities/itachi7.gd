@@ -7,7 +7,7 @@ func describe(user):
 
 func split_desc():
 	return [
-		"Deals 50 Piercing damage to target enemy",
+		"Deals 40 Piercing damage to target enemy",
 		["+20 damage if the target is sealed by Totsuka Blade", Color.CADET_BLUE],
 	]
 
@@ -15,7 +15,7 @@ func split_desc():
 func execute(user, battle):
 	var context = make_context(battle)
 	for target in user.targeter.targets:
-		var dmg = 50
+		var dmg = 40
 		var seal = target.has_effect("Totsuka Blade", EffectType.Type.MARK, user)
 		if seal and seal.skill_seal:
 			dmg += 20
